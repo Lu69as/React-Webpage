@@ -1,0 +1,709 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap");
+.App {
+  text-align: center;
+}
+
+nav {
+  z-index: 100;
+  position: fixed;
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 95%);
+}
+nav a {
+  width: 10%;
+  margin-inline: 2%;
+  cursor: pointer;
+}
+nav a .lightBulb {
+  transition: 400ms;
+  position: absolute;
+  width: 8%;
+  height: 20%;
+  background: grey;
+  top: 0;
+  margin-left: 1%;
+  border-radius: 0 0 2vw 2vw;
+}
+nav a .light {
+  transition: 400ms;
+  position: absolute;
+  top: 0;
+  margin-left: 1.5%;
+  width: 7%;
+  height: 0%;
+}
+nav a p {
+  transition: 400ms;
+  width: 100%;
+  color: white;
+  font-size: 1.8vw;
+}
+nav a:hover .lightBulb {
+  background: white;
+  transition: 800ms;
+}
+nav a:hover .light {
+  height: 55%;
+  background: linear-gradient(to bottom, grey, transparent);
+  transition: 800ms;
+}
+nav a:hover p {
+  color: white;
+  text-shadow: 0 1vh 5px rgba(255, 255, 255, 0.5);
+  transition: 800ms;
+}
+
+.me {
+  position: fixed;
+  top: 15vh;
+  left: calc(-33.3333333333vh - 1vw);
+  transition: 1600ms;
+  z-index: 99;
+  cursor: pointer;
+}
+.me p {
+  background-image: url("../img/me.jpg");
+  height: 50vh;
+  aspect-ratio: 1/1.5;
+  background-size: cover;
+  border-radius: 0 2vw 2vw 0;
+  border: solid 1vw white;
+  border-left: none;
+  box-shadow: 10px 0 10px 30px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+.me div {
+  position: absolute;
+  height: 2.5vh;
+  width: calc(33.3333333333vh + 5vw);
+  background: white;
+  box-shadow: 10px 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 2vw;
+  left: 0;
+  top: 7.5%;
+  z-index: -1;
+  transition: 1600ms;
+  text-align: right;
+  font-size: 200%;
+  color: black;
+  padding: 5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.me:hover {
+  left: 0;
+  transition: 800ms;
+}
+.me:hover div {
+  left: -33.3333333333vh;
+  transition: 800ms;
+}
+
+.spatter2 {
+  background-image: url("../img/spatter/spatter2.svg");
+  transition: 400ms;
+}
+
+.spatter1 {
+  background-image: url("../img/spatter/spatter1.svg");
+  transition: 400ms;
+}
+
+.spatter3 {
+  background-image: url("../img/spatter/spatter3.svg");
+  transition: 400ms;
+}
+
+.spatter4 {
+  background-image: url("../img/spatter/spatter4.svg");
+  transition: 400ms;
+}
+
+.spatter5 {
+  background-image: url("../img/spatter/spatter5.svg");
+  transition: 400ms;
+}
+
+.transition {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  aspect-ratio: 900/100;
+  width: 100vw;
+  z-index: 92;
+}
+.transition:nth-child(even) {
+  top: 0;
+}
+
+article {
+  position: relative;
+  padding-top: 12.5vw;
+  padding-bottom: 16.6666666667vw;
+  margin-right: 0;
+  width: 100vw;
+  overflow-x: hidden;
+}
+article:nth-child(even) {
+  background: #30181f;
+}
+
+.App-header {
+  min-height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+}
+.App-header h1 {
+  font-family: "poppins";
+  font-weight: 800;
+  background: linear-gradient(to right, #f075a0, #1de7a4, #f075a0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: #F075A0;
+  font-size: 9vw;
+  margin: 0;
+  cursor: default;
+}
+.App-header h1 ::selection, .App-header h1 :hover {
+  -webkit-text-fill-color: transparent;
+  background: transparent;
+}
+.App-header .cursor {
+  -webkit-text-fill-color: white;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: cursor-appear;
+}
+.App-header h2 {
+  margin: 0;
+  font-family: "poppins";
+  font-weight: 500;
+  font-size: 4vw;
+}
+
+@keyframes cursor-appear {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  51% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#Experience section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  transition: 1200ms;
+}
+#Experience section .container {
+  width: 80%;
+  aspect-ratio: 1.6/1;
+  background: #7e4056;
+  border-radius: 2vw;
+  margin-inline: 4%;
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
+}
+#Experience section .container h1 {
+  font-size: 3vw;
+  margin: 1.5vw 0 0 0;
+}
+#Experience section .container .icons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5%;
+}
+#Experience section .container .icons-container .media-icon, #Experience section .container .icons-container .programming-icon {
+  height: 5vw;
+  aspect-ratio: 1;
+  margin-inline: 2%;
+}
+#Experience section .container .icons-container .media-icon:nth-child(even), #Experience section .container .icons-container .programming-icon:nth-child(even) {
+  margin: 15vw 0 5vh 0;
+}
+#Experience section .container .icons-container .media-icon img, #Experience section .container .icons-container .programming-icon img {
+  transition: 400ms;
+  width: 100%;
+  aspect-ratio: 1;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+  scale: 1.0001;
+  cursor: pointer;
+}
+#Experience section .container .icons-container .media-icon div, #Experience section .container .icons-container .programming-icon div {
+  transition: 1200ms;
+  width: 22.5%;
+  aspect-ratio: 1/1.6;
+  position: absolute;
+  bottom: 21.13%;
+  right: -22.5%;
+  border-radius: 5vw 0 0 5vw;
+  background: #7e4056;
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+  text-align: center;
+}
+#Experience section .container .icons-container .media-icon div p, #Experience section .container .icons-container .programming-icon div p {
+  font-size: 1.2vw;
+  margin: 5% 10%;
+}
+#Experience section .container .icons-container .media-icon div p li, #Experience section .container .icons-container .programming-icon div p li {
+  text-align: left;
+  margin: 5% 15%;
+  font-size: 1.4vw;
+  list-style: armenian;
+}
+#Experience section .container .icons-container .media-icon div p li a, #Experience section .container .icons-container .programming-icon div p li a {
+  color: rgb(205, 237, 255) !important;
+}
+#Experience section .container .icons-container .media-icon:hover > img, #Experience section .container .icons-container .programming-icon:hover > img {
+  scale: 1.2;
+  transition: 800ms;
+}
+#Experience section .container .icons-container .media-icon .experienceShowDesc, #Experience section .container .icons-container .programming-icon .experienceShowDesc {
+  right: 0;
+  pointer-events: all;
+  transition: 1200ms;
+}
+
+#Work {
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 5vw;
+  row-gap: 5vw;
+  justify-content: center;
+  align-items: center;
+}
+#Work .window {
+  width: 40vw;
+  aspect-ratio: 2/1;
+  background: rgba(0, 183, 255, 0.055);
+  border: solid 0.5vw #0f7e59;
+  overflow: hidden;
+  position: relative;
+  transform: skewX(0deg);
+  margin-inline: 3%;
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 20vw 0 rgba(0, 255, 34, 0.2), inset -20vw 0 rgba(255, 123, 0, 0.2);
+  border-radius: 0.5vw;
+  transition: 1600ms;
+}
+#Work .window h1 {
+  font-size: 4vw;
+  margin: 1vw 0 0 0;
+  opacity: 0.5;
+  transition: 1600ms;
+}
+#Work .window p {
+  font-size: 1.2vw;
+  margin: 3%;
+  opacity: 0.4;
+  transition: 1600ms;
+}
+#Work .window .plank {
+  position: absolute;
+  width: 1%;
+  height: 100vw;
+  background: #0f7e59;
+  left: 50%;
+  bottom: 0;
+  z-index: 2;
+  transition: 1600ms;
+  pointer-events: none;
+}
+#Work .window:hover {
+  box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 20vw 0 rgba(0, 255, 34, 0.025), inset -20vw 0 rgba(255, 123, 0, 0.025);
+  transition: 800ms;
+}
+#Work .window:hover .plank, #Work .window:hover .plank2 {
+  opacity: 0.025;
+  transition: 800ms;
+}
+#Work .window:hover h1, #Work .window:hover p {
+  opacity: 1;
+  transition: 800ms;
+}
+
+#Education section .line {
+  position: relative;
+  margin: 10vw;
+  width: 80vw;
+  aspect-ratio: 80/1;
+  background: white;
+}
+#Education section .line .endline {
+  height: 5vw;
+  aspect-ratio: 1/5;
+  position: absolute;
+  background: white;
+  top: -2vw;
+  box-shadow: 79vw 0 white;
+}
+#Education section .line .school {
+  position: absolute;
+  left: 10%;
+}
+#Education section .line .school img {
+  position: absolute;
+  width: 5vw;
+  height: 5vw;
+  border-radius: 100vw;
+  top: -10vw;
+  left: 5vw;
+  transition: 400ms;
+  scale: 1.1;
+}
+#Education section .line .school h1 {
+  position: absolute;
+  width: 15vw;
+  top: 5vw;
+  opacity: 0;
+  transition: 400ms;
+}
+#Education section .line .school:nth-child(even) img {
+  top: 5vw;
+}
+#Education section .line .school:nth-child(even) h1 {
+  top: -10vw;
+}
+#Education section .line .school:nth-child(3) {
+  left: 30%;
+}
+#Education section .line .school:nth-child(4) {
+  left: 50%;
+}
+#Education section .line .school:nth-child(5) {
+  left: 75%;
+}
+#Education section .line .school:hover img {
+  scale: 1.5;
+  transition: 1200ms;
+}
+#Education section .line .school:hover h1 {
+  opacity: 0.8;
+  transition: 1200ms;
+}
+
+#Hobbies {
+  display: flex;
+  flex-direction: column;
+}
+#Hobbies .container {
+  width: 85%;
+  background: #7e4056;
+  border-radius: 2vw;
+  margin-inline: 10%;
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: hidden;
+}
+#Hobbies h1 {
+  font-size: 3vw;
+  margin: 15vh 0 2.5vh 0;
+}
+#Hobbies .games {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#Hobbies .games .game {
+  transition: 1200ms;
+  width: 10vw;
+  aspect-ratio: 1/1.43;
+  transform: scaleY(0.99);
+  box-shadow: 0 0 100px rgb(0, 0, 0);
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0.5vw;
+  margin-inline: 2.5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+#Hobbies .games .game div {
+  transition: 1600ms;
+  width: 10vw;
+  aspect-ratio: 1/1.43;
+  position: absolute;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent 50%);
+}
+#Hobbies .games .game img {
+  height: 100%;
+}
+#Hobbies .games .game:hover {
+  transition: 800ms;
+  transform: scaleY(0.95);
+  box-shadow: 0 1.5vh 20px rgba(0, 0, 0, 0.4);
+}
+#Hobbies .games .game:hover > div {
+  height: inherit;
+  transition: 800ms;
+  margin-top: -14.3vw;
+}
+#Hobbies .cars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+#Hobbies .cars .car img:nth-child(1) {
+  height: 10vw;
+  margin: 3vw 3vw 33vh 3vw;
+  cursor: pointer;
+  transition: 1200ms;
+  filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
+  scale: 1.0001;
+}
+#Hobbies .cars .car img:nth-child(2) {
+  position: absolute;
+  width: 30vw;
+  right: -26vw;
+  bottom: 2vw;
+  filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.4));
+  pointer-events: none;
+}
+#Hobbies .cars .car:hover img:nth-child(1) {
+  scale: 1.1;
+  transition: 800ms;
+}
+#Hobbies .cars .car:hover img:nth-child(2) {
+  transition: 3200ms ease-in-out;
+  right: 81vw;
+  rotate: 20deg;
+}
+#Hobbies .f1 {
+  background: linear-gradient(130deg, #FA7E0B 33%, #63D0E0);
+  height: 80vh;
+  margin-bottom: 10%;
+}
+#Hobbies .f1 h1 {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  font-size: 1.5vw;
+  width: 60vw;
+  height: fit-content;
+  top: 0;
+  left: 5vw;
+  background: rgba(15, 126, 89, 0.1882352941);
+  border-radius: 2vw;
+  border: solid 1vw rgba(15, 126, 89, 0.062745098);
+  z-index: 1;
+  transition: 400ms;
+  padding: 5vw;
+}
+#Hobbies .f1 h1 img {
+  position: absolute;
+  width: 5vw !important;
+  left: 1vw;
+  top: 1vw;
+  opacity: 0.4;
+  border-radius: 0.5vw;
+}
+#Hobbies .f1 .team {
+  position: absolute;
+  width: 10vw;
+  top: 0;
+  left: 2vw;
+}
+#Hobbies .f1 .team img {
+  width: 10vw;
+  cursor: pointer;
+  scale: 1.0001;
+  transition: 400ms;
+  z-index: 3;
+}
+#Hobbies .f1 .team img:hover {
+  scale: 1.05;
+  transition: 800ms;
+}
+#Hobbies .f1 .team:hover {
+  transition: 800ms;
+}
+#Hobbies .f1 .team:hover > h1 {
+  transition: 800ms;
+  opacity: 1;
+}
+#Hobbies .f1 .driver img {
+  transition: 1200ms;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 20vw;
+  scale: 1.0001;
+  cursor: pointer;
+  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.2));
+  z-index: 2;
+}
+#Hobbies .f1 .driver:nth-child(2) img {
+  width: 17.5vw;
+  right: 10vw;
+}
+#Hobbies .f1 .driver:nth-child(1) img {
+  width: 15vw;
+  right: 20vw;
+}
+#Hobbies .f1 .driver:hover > img {
+  scale: 1.05;
+  filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
+  transition: 800ms;
+}
+#Hobbies .f1 .driver:hover > h1 {
+  transition: 800ms;
+  opacity: 1;
+}
+
+footer {
+  background: #f075a0;
+  margin: 0;
+  width: 100vw;
+  aspect-ratio: 5/1;
+  position: relative;
+}
+footer .info {
+  text-align: left;
+  margin-left: 5vw;
+}
+footer .info h1 {
+  margin: 0;
+  font-size: 3vw;
+  color: #3a1d27;
+}
+footer .info h1:nth-child(2) {
+  text-align: center;
+  position: absolute;
+  right: 20vw;
+  top: 0;
+}
+footer .info p {
+  margin: 0 2vw;
+  font-size: 2vw;
+  font-weight: 600;
+  color: rgba(59, 28, 39, 0.8156862745);
+}
+footer section {
+  display: flex;
+  justify-content: right;
+  width: 50vw;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+}
+footer section a {
+  width: 100%;
+  margin-inline: 2.5%;
+}
+footer section a svg {
+  padding: 20%;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 1vw;
+  scale: 1.00001;
+  transition: 1600ms;
+}
+footer section a svg:hover {
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.4);
+  scale: 1.05;
+  transition: 800ms;
+}
+
+@media (width < 100vh) {
+  .me {
+    display: none;
+  }
+  nav a:nth-child(1) {
+    width: 40%;
+  }
+  nav a:nth-child(1) .lightBulb {
+    width: 35%;
+    margin-left: 2.5%;
+  }
+  nav a:nth-child(1) .light {
+    margin-left: 5%;
+    width: 30%;
+  }
+  nav a:nth-child(1) p {
+    font-size: 5vw;
+  }
+  nav a:nth-child(2), nav a:nth-child(3), nav a:nth-child(4), nav a:nth-child(5) {
+    display: none;
+  }
+  #Experience section {
+    flex-direction: column;
+  }
+  #Experience section .container:nth-child(2) {
+    margin-top: 10%;
+  }
+  #Experience section .media-icon, #Experience section .programming-icon {
+    width: 10vw;
+  }
+  #Work {
+    grid-template-columns: auto;
+  }
+  #Work .window {
+    width: 80vw;
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.2), inset -40vw 0 rgba(255, 123, 0, 0.2);
+    border: solid 1vw #0f7e59;
+  }
+  #Work .window h1 {
+    font-size: 10vw;
+  }
+  #Work .window p {
+    font-size: 2.5vw;
+  }
+  #Work .window .plank {
+    width: 1vw;
+  }
+  #Work .window:hover {
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.025), inset -40vw 0 rgba(255, 123, 0, 0.025);
+  }
+  #Hobbies h1 {
+    font-size: 10vw;
+  }
+  #Hobbies .games .game {
+    width: 50vw;
+  }
+  #Hobbies .cars {
+    padding-bottom: 40vw;
+  }
+  #Hobbies .cars .car img:nth-child(1) {
+    height: 40vw;
+    margin: 3vw;
+  }
+  #Hobbies .cars .car img:nth-child(2) {
+    width: 80vw;
+    right: -68vw;
+  }
+  #Hobbies .f1 .driver img {
+    width: 40vw;
+  }
+  #Hobbies .f1 .driver:nth-child(2) img {
+    width: 35vw;
+    right: 20vw;
+  }
+  #Hobbies .f1 .driver:nth-child(1) img {
+    width: 30vw;
+    right: 40vw;
+  }
+  #Hobbies .f1 .driver h1 {
+    font-size: 3vw;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */
