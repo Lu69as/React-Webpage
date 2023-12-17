@@ -1,4 +1,3 @@
-import './css/App.css';
 import Html from './img/experience/html.png'; import Css from './img/experience/css.png'; import Js from './img/experience/js.png'; import Csharp from './img/experience/csharp.png';
 import Sql from './img/experience/mysql.png'; import Photosop from './img/experience/photoshop.png'; import Premiere from './img/experience/premiere.png'; import Indesign
   from './img/experience/indesign.png'; import Wordpress from './img/experience/wordpress.png'; import Obs from './img/experience/obs.png';
@@ -140,7 +139,7 @@ function App() {
       <article id='Experience'>
         <img className='transition' alt='transition3' src={transition3}/>
         <img className='transition' alt='transition2' src={transition2}/>
-        <section>
+        <section style={{width: '100%'}}>
           <div className='container programming'>
             <h1>PROGRAMMING</h1>
             <div className='icons-container'>
@@ -333,19 +332,19 @@ function App() {
           <div className='line'>
             <div className='endline'></div>
             <div className='school'>
-              <img src={school1} alt='school1'/>
+              <div><img src={school1} alt='school1'/></div>
               <h1>Tryggheim Barnehage <br></br> 2009 - 2012</h1>
             </div>
             <div className='school'>
-              <img src={school2} alt='school2'/>
+              <div><img src={school2} alt='school2'/></div>
               <h1>Kjølberg School <br></br> 2012 - 2019</h1>
             </div>
             <div className='school'>
-              <img src={school3} alt='school3'/>
+              <div><img src={school3} alt='school3'/></div>
               <h1>Borge Secondary School <br></br> 2019 - 2022</h1>
             </div>
             <div className='school'>
-              <img src={school4} alt='school4'/>
+              <div><img src={school4} alt='school4'/></div>
               <h1>Glemmen High School <br></br> 2022 - 2024</h1>
             </div>
           </div>
@@ -418,9 +417,9 @@ function App() {
           <div className='driver'>
             <img src={f1driver1} alt='Lando Norris' />
             <h1>
-              Nico Hulkenberg is my second favorite driver <br></br>
+              Lando Norris is my absolute favorite driver <br></br>
               In 2023, He drives for the Mclaren team<br></br>
-              He has 0x Grand prix victories, 0x Podiums <br></br>
+              He has 0x Grand prix victories, 13x Podiums <br></br>
               and 0x World Championships <br></br>
               <img src={flag1} alt='Britain' />
             </h1>
@@ -428,10 +427,12 @@ function App() {
           <div className='team'>
             <img src={f1logo} alt='Mclaren' />
             <h1>
-              Lando Norris is my absolute favorite driver <br></br>
-              In 2023, He drives for the Mclaren team<br></br>
-              He has 0x Grand prix victories, 13x Podiums <br></br>
-              and 0x World Championships <br></br>
+              Mclaren is my favorite formula 1 Team <br></br>
+              In 2023, They have Lando Norris and <br></br>
+              Oscar Piastri as their driver line-up.<br></br><br></br>
+              They have 183x Grand prix victories, 503x Podiums<br></br>
+              , 8x Constructor World Championships <br></br>
+              and 12x Drivers World Championships <br></br>
               <img src={flag1} alt='Britain' />
             </h1>
           </div>
