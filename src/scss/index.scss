@@ -8,22 +8,34 @@ body {
   color: #FCE3EA;
   overflow-x: hidden;
   background-color: #1C0E12;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { 
+      display: none;
+  }
 }
-
 html {scroll-behavior: smooth;}
 :target {scroll-margin-top: 10vh;}
 ::selection {background: #1de7a440;}
 a {text-decoration: none}
 
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap');
-
 .App {
   text-align: center;
 }
 
-nav {
+.load {
+  width: 100vw;
+  height: 100vh;
+  background: black;
   z-index: 100;
+  position: fixed;
+  padding: 30vh 0;
+  font-size: 10vw;
+}
+
+nav {
+  z-index: 99;
   position: fixed;
   width: 100%;
   height: 10vh;
@@ -32,7 +44,23 @@ nav {
   justify-content: center;
   align-items: center;
   font-family: 'Poppins';
-  background: linear-gradient(to bottom, rgba(0, 0, 0, .9), transparent 95%);
+
+  .progress-container {
+    width: 100vw;
+    height: 10vh;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, .8), transparent);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    .progress-bar {
+      height: 20%;
+      background: #2e335e;
+      width: 0%;
+      border-radius: 0 2vw 2vw 0;
+    }
+  }
 
   & a {
     width: 10%;
@@ -44,7 +72,7 @@ nav {
       position: absolute;
       width: 8%;
       height: 20%;
-      background: grey;
+      background: #f075a0;
       top: 0;
       margin-left: 1%;
       border-radius: 0 0 2vw 2vw;
@@ -499,7 +527,6 @@ article {
       width: 10vw;
       aspect-ratio: 1 / 1.43;
       transform: scaleY(.99);
-      box-shadow: 0 0 10px rgba(0, 0, 0.4);
       overflow: hidden;
       cursor: pointer;
       border-radius: .5vw;
@@ -512,7 +539,7 @@ article {
         width: 10vw;
         aspect-ratio: 1 / 1.43;
         position: absolute;
-        background: linear-gradient(to top, rgba(255, 255, 255, .2), transparent 50%);
+        background: linear-gradient(to top, rgba(255, 255, 255, .1), transparent 50%);
       }
       
       & img {
@@ -588,7 +615,6 @@ article {
       background: #0f7e5930;
       border-radius: 2vw;
       border: solid 1vw #0f7e5910;
-      z-index: 5;
       transition: 400ms;
       padding: 5vw;
 
@@ -668,7 +694,7 @@ article {
 }
 
 footer {
-  background: #f075a0;
+  background: #ca6186;
   margin: 0;
   width: 100vw;
   aspect-ratio: 5 / 1;
@@ -734,14 +760,14 @@ footer {
   }
 
   nav {
-    & a:nth-child(1) {
+    & a {
       width: 40%;
       .lightBulb {width: 35%; margin-left: 2.5%;}
       .light {margin-left: 5%; width: 30%;}
       & p {font-size: 5vw;}
     }
     
-    & a:nth-child(2), & a:nth-child(3), & a:nth-child(4), & a:nth-child(5) {
+    & a:nth-child(3), & a:nth-child(4), & a:nth-child(5), & a:nth-child(6) {
       display: none;
     }
   }
@@ -800,7 +826,7 @@ footer {
             width: 15vw;
             height: 15vw;
             overflow: hidden;
-            left: -25vw;
+            left: -35vw;
             top: 10vw;
             scale: 1.0001;
             border-radius: .5vw;
@@ -816,24 +842,26 @@ footer {
   
           & h1 {
             position: absolute;
-            width: 30vw;
-            left: 15vw;
+            width: 45vw;
+            font-size: 3vw;
+            left: 5vw;
             opacity: 0;
+            top: 10vw;
             transition: 400ms;
           }
           
           &:nth-child(odd) {
             & div {
-              left: 15vw;
+              left: 20vw;
             }
 
             &:hover > div {
-              left: 10vw;
+              left: 15vw;
             }
             
             & h1 {
-              top: -5vw;
-              left: -40vw;
+              top: 5vw;
+              left: -47.5vw;
             }
           }
   
@@ -843,9 +871,8 @@ footer {
   
           &:hover {
             & div {
-              width: 30vw;
-              scale: 1.2;
-              left: -40vw;
+              width: 25vw;
+              left: -35vw;
               box-shadow: 0 .5vw 10px rgba(0, 0, 0, 0.4);
               transition: 1200ms;
 

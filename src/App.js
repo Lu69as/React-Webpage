@@ -1,27 +1,21 @@
-import Html from './img/experience/html.png'; import Css from './img/experience/css.png'; import Js from './img/experience/js.png'; import Csharp from './img/experience/csharp.png';
-import Sql from './img/experience/mysql.png'; import Photosop from './img/experience/photoshop.png'; import Premiere from './img/experience/premiere.png'; import Indesign
-  from './img/experience/indesign.png'; import Wordpress from './img/experience/wordpress.png'; import Obs from './img/experience/obs.png';
-
-import f123 from './img/hobbies/f1.png'; import skyrim from './img/hobbies/skyrim.png'; import iracing from './img/hobbies/iracing.png';
-import boneworks from './img/hobbies/boneworks.png'; import alyx from './img/hobbies/alyx.png';
-
-import honda from './img/hobbies/honda.png'; import toyota from './img/hobbies/toyota.png'; import dodge from './img/hobbies/dodge.png';
-import nsx from './img/hobbies/nsx.png'; import supra from './img/hobbies/supra.png'; import challenger from './img/hobbies/challenger.png';
-
-import f1driver1 from './img/hobbies/norris.png'; import f1driver2 from './img/hobbies/hulkenberg.png'; import f1driver3 from './img/hobbies/alonso.png'; import f1logo from 
-'./img/hobbies/mclaren.png'; import flag1 from './img/hobbies/british-flag.png'; import flag2 from './img/hobbies/german-flag.png'; import flag3 from './img/hobbies/spanish-flag.png';
-
-import transition1 from './img/transitions/header-experience.svg'; import transition2 from './img/transitions/header-experience2.svg';
-import transition3 from './img/transitions/experience-work.svg'; import transition4 from './img/transitions/experience-work2.svg';
-import transition5 from './img/transitions/work-education.svg'; import transition6 from './img/transitions/work-education2.svg';
-import transition7 from './img/transitions/education-hobbies.svg'; import transition8 from './img/transitions/education-hobbies2.svg';
-import transition9 from './img/transitions/hobbies-footer.svg';
-
+import Html from './img/experience/html-min.png'; import Css from './img/experience/css-min.png'; import Js from './img/experience/js-min.png'; 
+import Csharp from './img/experience/csharp-min.png'; import Sql from './img/experience/mysql-min.png'; import Photosop from './img/experience/photoshop-min.png'; 
+import Premiere from './img/experience/premiere-min.png'; import Indesign from './img/experience/indesign-min.png'; import Wordpress from './img/experience/wordpress-min.png'; 
+import Obs from './img/experience/obs-min.png'; import f123 from './img/hobbies/f1-min.png'; import skyrim from './img/hobbies/skyrim-min.png'; 
+import iracing from './img/hobbies/iracing-min.png'; import boneworks from './img/hobbies/boneworks-min.png'; import alyx from './img/hobbies/alyx-min.png'; 
+import honda from './img/hobbies/honda-min.png'; import toyota from './img/hobbies/toyota-min.png'; import dodge from './img/hobbies/dodge-min.png';
+import nsx from './img/hobbies/nsx-min.png'; import supra from './img/hobbies/supra-min.png'; import challenger from './img/hobbies/challenger-min.png';
+import f1driver1 from './img/hobbies/norris-min.png'; import f1driver2 from './img/hobbies/hulkenberg-min.png'; import f1driver3 from './img/hobbies/alonso-min.png';
+import f1logo from  './img/hobbies/mclaren-min.png'; import flag1 from './img/hobbies/british-flag-min.png'; import flag2 from './img/hobbies/german-flag-min.png'; 
+import flag3 from './img/hobbies/spanish-flag-min.png'; import transition1 from './img/transitions/header-experience.svg'; 
+import transition2 from './img/transitions/header-experience2.svg'; import transition3 from './img/transitions/experience-work.svg'; import 
+transition4 from './img/transitions/experience-work2.svg'; import transition5 from './img/transitions/work-education.svg'; import transition6 
+from './img/transitions/work-education2.svg'; import transition7 from './img/transitions/education-hobbies.svg'; import transition8 from 
+'./img/transitions/education-hobbies2.svg'; import transition9 from './img/transitions/hobbies-footer.svg';
 import school1 from './img/education/tryggheim.jpg'; import school2 from './img/education/kjolberg.jpg';
 import school3 from './img/education/Borge.jpg'; import school4 from './img/education/glemmen.jpg';
 
 let d = new Date();
-
 const user = {
   name: 'Lukas Okkenhaug',
   desc: ' A Creative Fella from Norway',
@@ -42,7 +36,19 @@ function changebackgrund() {
     currentbg = 1;
 }
 
+window.onscroll = function() {myFunction()};
+
+function myFunction() {
+  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  var scrolled = (winScroll / height) * 100;
+  document.querySelector(".myBar").style.width = scrolled + "%";
+  if (scrolled === 100) document.querySelector(".myBar").style.borderRadius = '0';
+  else document.querySelector(".myBar").style.borderRadius = '0 2vw 2vw 0';
+}
+
 window.onload = () => {
+  document.querySelector('.load').style.display = 'none'
   changebackgrund();
 
   const h1 = document.querySelector('.App-header h1');
@@ -97,7 +103,11 @@ window.onload = () => {
 function App() {
   return (
     <div className="App">
+      <div className='load'>
+        (Let me Load)
+      </div>
       <nav>
+      <div className="progress-container"><div className="progress-bar myBar"></div></div>
         <a href="#" onClick={changebackgrund}>
           <p>Home</p>
           <div className='light'></div>

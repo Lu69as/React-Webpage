@@ -7,6 +7,11 @@ body {
   color: #FCE3EA;
   overflow-x: hidden;
   background-color: #1C0E12;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 html {
@@ -29,8 +34,18 @@ a {
   text-align: center;
 }
 
-nav {
+.load {
+  width: 100vw;
+  height: 100vh;
+  background: black;
   z-index: 100;
+  position: fixed;
+  padding: 30vh 0;
+  font-size: 10vw;
+}
+
+nav {
+  z-index: 99;
   position: fixed;
   width: 100%;
   height: 10vh;
@@ -39,7 +54,21 @@ nav {
   justify-content: center;
   align-items: center;
   font-family: "Poppins";
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent 95%);
+}
+nav .progress-container {
+  width: 100vw;
+  height: 10vh;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+nav .progress-container .progress-bar {
+  height: 20%;
+  background: #2e335e;
+  width: 0%;
+  border-radius: 0 2vw 2vw 0;
 }
 nav a {
   width: 10%;
@@ -51,7 +80,7 @@ nav a .lightBulb {
   position: absolute;
   width: 8%;
   height: 20%;
-  background: grey;
+  background: #f075a0;
   top: 0;
   margin-left: 1%;
   border-radius: 0 0 2vw 2vw;
@@ -473,7 +502,6 @@ article:nth-child(even) {
   width: 10vw;
   aspect-ratio: 1/1.43;
   transform: scaleY(0.99);
-  box-shadow: 0 0 10px rgb(0, 0, 0);
   overflow: hidden;
   cursor: pointer;
   border-radius: 0.5vw;
@@ -486,7 +514,7 @@ article:nth-child(even) {
   width: 10vw;
   aspect-ratio: 1/1.43;
   position: absolute;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.2), transparent 50%);
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent 50%);
 }
 #Hobbies .games .game img {
   height: 100%;
@@ -549,7 +577,6 @@ article:nth-child(even) {
   background: rgba(15, 126, 89, 0.1882352941);
   border-radius: 2vw;
   border: solid 1vw rgba(15, 126, 89, 0.062745098);
-  z-index: 5;
   transition: 400ms;
   padding: 5vw;
 }
@@ -615,7 +642,7 @@ article:nth-child(even) {
 }
 
 footer {
-  background: #f075a0;
+  background: #ca6186;
   margin: 0;
   width: 100vw;
   aspect-ratio: 5/1;
@@ -672,21 +699,21 @@ footer section a svg:hover {
   .me {
     display: none;
   }
-  nav a:nth-child(1) {
+  nav a {
     width: 40%;
   }
-  nav a:nth-child(1) .lightBulb {
+  nav a .lightBulb {
     width: 35%;
     margin-left: 2.5%;
   }
-  nav a:nth-child(1) .light {
+  nav a .light {
     margin-left: 5%;
     width: 30%;
   }
-  nav a:nth-child(1) p {
+  nav a p {
     font-size: 5vw;
   }
-  nav a:nth-child(2), nav a:nth-child(3), nav a:nth-child(4), nav a:nth-child(5) {
+  nav a:nth-child(3), nav a:nth-child(4), nav a:nth-child(5), nav a:nth-child(6) {
     display: none;
   }
   #Experience section {
@@ -737,7 +764,7 @@ footer section a svg:hover {
     width: 15vw;
     height: 15vw;
     overflow: hidden;
-    left: -25vw;
+    left: -35vw;
     top: 10vw;
     scale: 1.0001;
     border-radius: 0.5vw;
@@ -752,20 +779,22 @@ footer section a svg:hover {
   }
   #Education section .line .school h1 {
     position: absolute;
-    width: 30vw;
-    left: 15vw;
+    width: 45vw;
+    font-size: 3vw;
+    left: 5vw;
     opacity: 0;
+    top: 10vw;
     transition: 400ms;
   }
   #Education section .line .school:nth-child(odd) div {
-    left: 15vw;
+    left: 20vw;
   }
   #Education section .line .school:nth-child(odd):hover > div {
-    left: 10vw;
+    left: 15vw;
   }
   #Education section .line .school:nth-child(odd) h1 {
-    top: -5vw;
-    left: -40vw;
+    top: 5vw;
+    left: -47.5vw;
   }
   #Education section .line .school:nth-child(3) {
     top: 30%;
@@ -777,9 +806,8 @@ footer section a svg:hover {
     top: 75%;
   }
   #Education section .line .school:hover div {
-    width: 30vw;
-    scale: 1.2;
-    left: -40vw;
+    width: 25vw;
+    left: -35vw;
     box-shadow: 0 0.5vw 10px rgba(0, 0, 0, 0.4);
     transition: 1200ms;
   }
