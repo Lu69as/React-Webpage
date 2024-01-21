@@ -128,7 +128,7 @@ nav a:hover p {
   aspect-ratio: 1/1.5;
   background-size: cover;
   border-radius: 0 2vw 2vw 0;
-  outline: solid 1vw rgba(240, 117, 160, 0.5490196078);
+  outline: solid 1vw #f075a0;
   border-left: none;
   box-shadow: 10px 0 10px 30px rgba(0, 0, 0, 0.1);
   z-index: 9999;
@@ -187,20 +187,48 @@ nav a:hover p {
 .transition {
   position: absolute;
   bottom: 0;
-  left: 0;
-  aspect-ratio: 900/100;
-  width: 100vw;
+  left: -170vw;
+  aspect-ratio: 18/1;
+  height: 15vw;
   z-index: 92;
+  animation-duration: 120s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-name: transitionAni;
+  pointer-events: none;
 }
 .transition:nth-child(even) {
   top: 0;
+  animation-name: transitionAni2;
 }
 
+@keyframes transitionAni {
+  0% {
+    left: -170vw;
+  }
+  50% {
+    left: 0;
+  }
+  100% {
+    left: -170vw;
+  }
+}
+@keyframes transitionAni2 {
+  0% {
+    left: 0;
+  }
+  50% {
+    left: -170vw;
+  }
+  100% {
+    left: 0;
+  }
+}
 article {
   position: relative;
   padding-top: 12.5vw;
   padding-bottom: 16.6666666667vw;
-  margin-right: 0;
+  margin: 0;
   width: 100vw;
   overflow-x: hidden;
 }
@@ -216,6 +244,10 @@ article:nth-child(even) {
   align-items: center;
   justify-content: center;
   background-size: cover;
+  overflow-x: hidden;
+}
+.App-header .transition {
+  animation: none;
 }
 .App-header h1 {
   font-family: "poppins";
@@ -260,6 +292,13 @@ article:nth-child(even) {
     opacity: 0;
   }
 }
+#Experience {
+  position: relative;
+}
+#Experience h1 {
+  font-size: 3vw;
+  margin: 1.5vw 0 0 0;
+}
 #Experience section {
   display: flex;
   flex-direction: row;
@@ -268,45 +307,40 @@ article:nth-child(even) {
   transition: 1200ms;
 }
 #Experience section .container {
+  position: relative;
   width: 80%;
   aspect-ratio: 1.6/1;
   background: #7e4056;
   border-radius: 2vw;
   margin-inline: 4%;
   box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
-}
-#Experience section .container h1 {
-  font-size: 3vw;
-  margin: 1.5vw 0 0 0;
+  overflow: hidden;
 }
 #Experience section .container .icons-container {
-  display: flex;
-  flex-direction: row;
+  margin-top: 15%;
+  position: relative;
   justify-content: center;
-  margin-top: 5%;
+  display: flex;
+  gap: 2vw;
 }
-#Experience section .container .icons-container .media-icon, #Experience section .container .icons-container .programming-icon {
-  height: 5vw;
-  aspect-ratio: 1;
-  margin-inline: 2%;
-}
-#Experience section .container .icons-container .media-icon:nth-child(even), #Experience section .container .icons-container .programming-icon:nth-child(even) {
-  margin: 15vw 0 5vh 0;
-}
-#Experience section .container .icons-container .media-icon img, #Experience section .container .icons-container .programming-icon img {
+#Experience section .container .icons-container img {
   transition: 400ms;
-  width: 100%;
+  width: 12.5%;
   aspect-ratio: 1;
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
   scale: 1.0001;
   cursor: pointer;
 }
-#Experience section .container .icons-container .media-icon div, #Experience section .container .icons-container .programming-icon div {
+#Experience section .container .icons-container img:hover {
+  scale: 1.2;
+  transition: 800ms;
+}
+#Experience .desc {
+  position: absolute;
   transition: 1200ms;
   width: 22.5%;
   aspect-ratio: 1/1.6;
-  position: absolute;
-  bottom: 21.13%;
+  top: 14.0625%;
   right: -22.5%;
   border-radius: 5vw 0 0 5vw;
   background: #7e4056;
@@ -314,24 +348,20 @@ article:nth-child(even) {
   pointer-events: none;
   text-align: center;
 }
-#Experience section .container .icons-container .media-icon div p, #Experience section .container .icons-container .programming-icon div p {
+#Experience .desc p {
   font-size: 1.2vw;
   margin: 5% 10%;
 }
-#Experience section .container .icons-container .media-icon div p li, #Experience section .container .icons-container .programming-icon div p li {
+#Experience .desc p li {
   text-align: left;
   margin: 5% 15%;
   font-size: 1.4vw;
   list-style: armenian;
 }
-#Experience section .container .icons-container .media-icon div p li a, #Experience section .container .icons-container .programming-icon div p li a {
+#Experience .desc p li a {
   color: rgb(205, 237, 255) !important;
 }
-#Experience section .container .icons-container .media-icon:hover > img, #Experience section .container .icons-container .programming-icon:hover > img {
-  scale: 1.2;
-  transition: 800ms;
-}
-#Experience section .container .icons-container .media-icon .experienceShowDesc, #Experience section .container .icons-container .programming-icon .experienceShowDesc {
+#Experience .experienceShowDesc {
   right: 0;
   pointer-events: all;
   transition: 1200ms;
@@ -394,6 +424,13 @@ article:nth-child(even) {
   transition: 800ms;
 }
 
+#Education .transition {
+  right: -170vw;
+}
+#Education .transition:hover {
+  right: 0;
+  transition: 50s;
+}
 #Education section .line {
   position: relative;
   margin: 10vw;
@@ -415,32 +452,29 @@ article:nth-child(even) {
   position: absolute;
   left: 10%;
 }
-#Education section .line .school div {
+#Education section .line .school img {
   position: absolute;
-  width: 5vw;
-  height: 5vw;
+  width: 10vw;
   overflow: hidden;
   top: -10vw;
-  left: 5vw;
+  left: 2.5vw;
   scale: 1.0001;
   border-radius: 0.5vw;
   box-shadow: 0 0.2vw 10px rgba(0, 0, 0, 0.2);
-  transition: 400ms;
-}
-#Education section .line .school div img {
-  width: 200%;
-  height: 100%;
-  cursor: pointer;
   transition: 400ms;
 }
 #Education section .line .school h1 {
   position: absolute;
   width: 15vw;
   top: 5vw;
-  opacity: 0;
+  scale: 1.000001;
   transition: 400ms;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.02), transparent);
+  border-radius: 9em;
+  color: #FCE3EA;
+  font-size: 1.2vw;
 }
-#Education section .line .school:nth-child(odd) div {
+#Education section .line .school:nth-child(odd) img {
   top: 5vw;
 }
 #Education section .line .school:nth-child(odd) h1 {
@@ -455,32 +489,34 @@ article:nth-child(even) {
 #Education section .line .school:nth-child(5) {
   left: 75%;
 }
-#Education section .line .school:hover div {
-  width: 10vw;
+#Education section .line .school:hover img {
   scale: 1.2;
-  left: 2.5vw;
+  transition: 1200ms;
   box-shadow: 0 0.5vw 10px rgba(0, 0, 0, 0.4);
-  transition: 1200ms;
-}
-#Education section .line .school:hover div img {
-  width: 100%;
-  transition: 1200ms;
 }
 #Education section .line .school:hover h1 {
-  opacity: 0.8;
+  scale: 1.05;
   transition: 1200ms;
 }
 
 #Hobbies {
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
-  padding-bottom: 0;
+  justify-content: center;
+  gap: 2vw;
+}
+#Hobbies .titles {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2vw;
 }
 #Hobbies .container {
   width: 85%;
   background: #7e4056;
   border-radius: 2vw;
-  margin-inline: 10%;
+  margin-inline: 7.5%;
   box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
   position: relative;
   display: flex;
@@ -490,14 +526,32 @@ article:nth-child(even) {
 }
 #Hobbies h1 {
   font-size: 3vw;
-  margin: 15vh 0 2.5vh 0;
+  height: fit-content;
+  transition: 500ms;
+  cursor: pointer;
 }
-#Hobbies .games {
+#Hobbies h1:hover {
+  transition: 400ms;
+  text-shadow: 0 0.25vw rgb(0, 162, 255);
+}
+#Hobbies .transition:nth-child(odd) {
+  animation: none;
+  margin-top: 15vw;
+}
+#Hobbies .Games {
+  margin-inline: 5%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5vw;
+  padding: 2vw;
 }
-#Hobbies .games .game {
+#Hobbies .Games .gameList {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 2vw;
+}
+#Hobbies .Games .gameList .game {
   transition: 1200ms;
   width: 10vw;
   aspect-ratio: 1/1.43;
@@ -505,37 +559,68 @@ article:nth-child(even) {
   overflow: hidden;
   cursor: pointer;
   border-radius: 0.5vw;
-  margin-inline: 2.5%;
-  margin-top: 5%;
-  margin-bottom: 5%;
 }
-#Hobbies .games .game div {
+#Hobbies .Games .gameList .game div {
   transition: 1600ms;
   width: 10vw;
   aspect-ratio: 1/1.43;
   position: absolute;
   background: linear-gradient(to top, rgba(255, 255, 255, 0.1), transparent 50%);
 }
-#Hobbies .games .game img {
+#Hobbies .Games .gameList .game img {
   height: 100%;
 }
-#Hobbies .games .game:hover {
+#Hobbies .Games .gameList .game:hover {
   transition: 800ms;
   transform: scaleY(0.95);
   box-shadow: 0 1.5vh 20px rgba(0, 0, 0, 0.4);
 }
-#Hobbies .games .game:hover > div {
+#Hobbies .Games .gameList .game:hover > div {
   height: inherit;
   transition: 800ms;
   margin-top: -14.3vw;
 }
-#Hobbies .cars {
+#Hobbies .Games .gameDescriptions {
+  width: 40%;
+  aspect-ratio: 1/0.75;
+  background: #693648;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.6);
+  border-radius: 2vw;
+  padding: 2vw;
+}
+#Hobbies .Games .gameDescriptions .gameDesc {
+  display: none;
+}
+#Hobbies .Games .gameDescriptions .gameDesc h1 {
+  margin: 0;
+  cursor: text;
+}
+#Hobbies .Games .gameDescriptions .gameDesc h1:hover {
+  text-shadow: none;
+}
+#Hobbies .Games .gameDescriptions .gameDesc p {
+  font-size: 1.2vw;
+  line-height: 2vw;
+}
+#Hobbies .Games .gameDescriptions svg {
+  margin-top: 5%;
+  border-radius: 100vw;
+  padding: 1vw;
+  width: 2.5vw;
+  scale: 1.00001;
+  transition: 200ms;
+}
+#Hobbies .Games .gameDescriptions svg:hover {
+  scale: 1.2;
+  transition: 400ms;
+}
+#Hobbies .Cars {
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
 }
-#Hobbies .cars .car img:nth-child(1) {
+#Hobbies .Cars .car img:nth-child(1) {
   height: 10vw;
   margin: 3vw 3vw 33vh 3vw;
   cursor: pointer;
@@ -543,7 +628,7 @@ article:nth-child(even) {
   filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
   scale: 1.0001;
 }
-#Hobbies .cars .car img:nth-child(2) {
+#Hobbies .Cars .car img:nth-child(2) {
   position: absolute;
   width: 30vw;
   right: -26vw;
@@ -551,36 +636,35 @@ article:nth-child(even) {
   filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.4));
   pointer-events: none;
 }
-#Hobbies .cars .car:hover img:nth-child(1) {
+#Hobbies .Cars .car:hover img:nth-child(1) {
   scale: 1.1;
   transition: 800ms;
 }
-#Hobbies .cars .car:hover img:nth-child(2) {
+#Hobbies .Cars .car:hover img:nth-child(2) {
   transition: 3200ms ease-in-out;
   right: 81vw;
   rotate: 20deg;
 }
-#Hobbies .f1 {
+#Hobbies .Formula {
   background: linear-gradient(130deg, #FA7E0B 33%, #63D0E0);
   height: 80vh;
-  margin-bottom: 10%;
 }
-#Hobbies .f1 h1 {
+#Hobbies .Formula h1 {
   position: absolute;
   pointer-events: none;
   opacity: 0;
   font-size: 1.5vw;
-  width: 60vw;
+  width: 45%;
   height: fit-content;
-  top: 0;
-  left: 5vw;
+  bottom: 5%;
+  left: 5%;
   background: rgba(15, 126, 89, 0.1882352941);
   border-radius: 2vw;
   border: solid 1vw rgba(15, 126, 89, 0.062745098);
   transition: 400ms;
   padding: 5vw;
 }
-#Hobbies .f1 h1 img {
+#Hobbies .Formula h1 img {
   position: absolute;
   width: 5vw !important;
   left: 1vw;
@@ -588,31 +672,30 @@ article:nth-child(even) {
   opacity: 0.4;
   border-radius: 0.5vw;
 }
-#Hobbies .f1 .team {
-  position: absolute;
+#Hobbies .Formula .team {
   width: 10vw;
   top: 0;
-  left: 2vw;
+  margin-left: 2%;
 }
-#Hobbies .f1 .team img {
+#Hobbies .Formula .team img {
   width: 10vw;
   cursor: pointer;
   scale: 1.0001;
   transition: 400ms;
   z-index: 3;
 }
-#Hobbies .f1 .team img:hover {
+#Hobbies .Formula .team img:hover {
   scale: 1.05;
   transition: 800ms;
 }
-#Hobbies .f1 .team:hover {
+#Hobbies .Formula .team:hover {
   transition: 800ms;
 }
-#Hobbies .f1 .team:hover > h1 {
+#Hobbies .Formula .team:hover > h1 {
   transition: 800ms;
   opacity: 1;
 }
-#Hobbies .f1 .driver img {
+#Hobbies .Formula .driver img {
   transition: 1200ms;
   position: absolute;
   right: 0;
@@ -623,20 +706,20 @@ article:nth-child(even) {
   filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.2));
   z-index: 2;
 }
-#Hobbies .f1 .driver:nth-child(2) img {
+#Hobbies .Formula .driver:nth-child(2) img {
   width: 17.5vw;
   right: 10vw;
 }
-#Hobbies .f1 .driver:nth-child(1) img {
+#Hobbies .Formula .driver:nth-child(1) img {
   width: 15vw;
   right: 20vw;
 }
-#Hobbies .f1 .driver:hover > img {
+#Hobbies .Formula .driver:hover > img {
   scale: 1.05;
   filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.5));
   transition: 800ms;
 }
-#Hobbies .f1 .driver:hover > h1 {
+#Hobbies .Formula .driver:hover > h1 {
   transition: 800ms;
   opacity: 1;
 }
@@ -746,7 +829,7 @@ footer section a svg:hover {
     box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.025), inset -40vw 0 rgba(255, 123, 0, 0.025);
   }
   #Education section .line {
-    margin: 5vw 45vw;
+    margin: 5vw 47.5vw;
     width: 5vw;
     aspect-ratio: 1/25;
   }
@@ -758,23 +841,15 @@ footer section a svg:hover {
   #Education section .line .school {
     position: absolute;
     left: 10%;
+    top: 10%;
   }
-  #Education section .line .school div {
-    position: absolute;
-    width: 15vw;
-    height: 15vw;
-    overflow: hidden;
-    left: -35vw;
-    top: 10vw;
+  #Education section .line .school img {
+    width: 25vw;
+    left: -37.5vw;
+    top: -10vw !important;
     scale: 1.0001;
     border-radius: 0.5vw;
     box-shadow: 0 0.2vw 10px rgba(0, 0, 0, 0.2);
-    transition: 400ms;
-  }
-  #Education section .line .school div img {
-    width: 200%;
-    height: 100%;
-    cursor: pointer;
     transition: 400ms;
   }
   #Education section .line .school h1 {
@@ -782,48 +857,44 @@ footer section a svg:hover {
     width: 45vw;
     font-size: 3vw;
     left: 5vw;
-    opacity: 0;
     top: 10vw;
     transition: 400ms;
   }
-  #Education section .line .school:nth-child(odd) div {
-    left: 20vw;
-  }
-  #Education section .line .school:nth-child(odd):hover > div {
+  #Education section .line .school:nth-child(even) img {
     left: 15vw;
   }
-  #Education section .line .school:nth-child(odd) h1 {
-    top: 5vw;
+  #Education section .line .school:nth-child(even) h1 {
+    top: 0;
     left: -47.5vw;
   }
   #Education section .line .school:nth-child(3) {
-    top: 30%;
+    top: 40%;
   }
   #Education section .line .school:nth-child(4) {
-    top: 50%;
+    top: 55%;
   }
   #Education section .line .school:nth-child(5) {
-    top: 75%;
+    top: 85%;
   }
-  #Education section .line .school:hover div {
-    width: 25vw;
-    left: -35vw;
-    box-shadow: 0 0.5vw 10px rgba(0, 0, 0, 0.4);
-    transition: 1200ms;
+  #Hobbies .Games {
+    flex-direction: column;
   }
-  #Education section .line .school:hover div img {
-    width: 100%;
-    transition: 1200ms;
+  #Hobbies .Games .gameList {
+    grid-template-columns: auto auto;
   }
-  #Education section .line .school:hover h1 {
-    opacity: 0.8;
-    transition: 1200ms;
+  #Hobbies .Games .game {
+    width: 35vw !important;
   }
-  #Hobbies h1 {
+  #Hobbies .Games .gameDescriptions {
+    width: 95%;
+    aspect-ratio: auto;
+  }
+  #Hobbies .Games .gameDescriptions h1 {
     font-size: 10vw;
   }
-  #Hobbies .games .game {
-    width: 50vw;
+  #Hobbies .Games .gameDescriptions p {
+    font-size: 4vw !important;
+    line-height: 6vw !important;
   }
   #Hobbies .cars {
     padding-bottom: 40vw;

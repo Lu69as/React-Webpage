@@ -19,9 +19,10 @@ let d = new Date();
 const user = {
   name: 'Lukas Okkenhaug',
   desc: ' A Creative Fella from Norway',
-  age: d.getFullYear() - 2006 + ' Years and ' + (d.getMonth() - 6) + ' Months old'
+  age: d.getFullYear() - (d.getMonth() <= 7 ? 2007 : 2006) + ' Years and ' 
+    + (d.getMonth() >= 7 ? d.getMonth() - (d.getDate() < 15 ? 7 : 6)
+      : d.getMonth() + (d.getDate() < 15 ? 7 : 8)) + ' Months old'
 }
-
 if (d.getDate === 15 && d.getMonth() === 12) {
   user.age = 'Its my Birthday! I`m turning ' + (d.getFullYear() - 2006) + ' Years old'
 }
@@ -36,9 +37,8 @@ function changebackgrund() {
     currentbg = 1;
 }
 
-window.onscroll = function() {myFunction()};
-
-function myFunction() {
+window.onscroll = function() {scrollbar()};
+function scrollbar() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   var scrolled = (winScroll / height) * 100;
@@ -79,25 +79,40 @@ window.onload = () => {
       }, (user.name.length * 150) + (i * 75));
     }
   } nameAppear();
-
-  function experienceShowDesc(desc) {
-    if (window.innerWidth > window.innerHeight) {
-      document.querySelectorAll('.icons-container div div').forEach((e) => {e.classList.remove('experienceShowDesc')})
-      document.querySelector('.icons-container div #' + desc).classList.add('experienceShowDesc');
-      document.querySelector('#Experience section').style.width = '75%';
   
-      document.addEventListener('keydown', function(e) {
-        if (e.key === "Escape") {
-          document.querySelector('.icons-container div #' + desc).classList.remove('experienceShowDesc');
-          document.querySelector('#Experience section').style.width = '100%';
-        }
-      })
-    }
-  }
-
-  document.querySelectorAll('.icons-container div img').forEach((e) => {
-    e.addEventListener('click', () => {experienceShowDesc(e.getAttribute("alt"))})
+  document.querySelectorAll('.icons-container img').forEach((e) => {
+    e.addEventListener('click', () => {
+      let desc = e.getAttribute("alt");
+        if (window.innerWidth > window.innerHeight) {
+          document.querySelectorAll('.desc').forEach((e) => {e.classList.remove('experienceShowDesc')})
+          document.querySelector('#' + desc).classList.add('experienceShowDesc');
+          document.querySelector('#Experience section').style.width = '75%';
+      
+          document.addEventListener('keydown', function(e) {
+          if (e.key === "Escape") {
+            document.querySelector('#' + desc).classList.remove('experienceShowDesc');
+            document.querySelector('#Experience section').style.width = '100%';
+          }
+        })
+      }
+    })
   })
+
+  document.querySelectorAll("#Hobbies .titles h1").forEach((e) => {
+    e.addEventListener('click', () => {
+      document.querySelectorAll("#Hobbies .container").forEach((x) => {x.style.display = "none"});
+  
+      if (e.innerHTML !== "Formula 1") document.querySelector("." + e.innerHTML).style.display = "flex";
+      else document.querySelector(".Formula").style.display = "flex";
+    })
+  });
+
+  document.querySelectorAll("#Hobbies .game").forEach((e) => {
+    e.addEventListener('click', () => {
+      document.querySelectorAll("#Hobbies .gameDesc").forEach((x) => {x.style.display = "none"});
+      document.querySelector("." + e.firstChild.getAttribute("alt")).style.display = "block";
+    })
+  });
 }
 
 function App() {
@@ -153,155 +168,135 @@ function App() {
           <div className='container programming'>
             <h1>PROGRAMMING</h1>
             <div className='icons-container'>
-              <div className='programming-icon'>
-                <img src={Html} alt='Html' />
-                <div id='Html'>
-                  <h1>Html</h1>
-                  <p>
-                    I started using Html in 2019 <br></br>
-                    These are the projects I have used Html
-                    
-                    <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
-                    <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
-                    <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
-                    <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
-                    <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
-                    <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='programming-icon'>
-                <img src={Css} alt='Css' />
-                <div id='Css'>
-                  <h1>Css</h1>
-                  <p>
-                    I started using Css in 2021 <br></br>
-                    These are the projects I have used Css
-                    
-                    <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
-                    <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
-                    <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
-                    <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
-                    <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
-                    <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='programming-icon'>
-                <img src={Js} alt='Js' />
-                <div id='Js'>
-                  <h1>JavaScript</h1>
-                  <p>
-                    I started using Js in 2022 <br></br>
-                    These are the projects I have used Js
-                    
-                    <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
-                    <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
-                    <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
-                    <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
-                    <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
-                    <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='programming-icon'>
-                <img src={Csharp} alt='Csharp' />
-                <div id='Csharp'>
-                  <h1>C#</h1>
-                  <p>
-                    I started using C# in 2023 <br></br>
-                    These are the projects I have used C#
-                    
-                    <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
-                    <li><a href='https://github.com/Lu69as/BubbleSort' target='blank' rel='noreferrer'>Bubble Sort</a></li>
-                    <li><a href='https://github.com/Lu69as/TemperatureIfElseWhile' target='blank' rel='noreferrer'>Temperature</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='programming-icon'>
-                <img src={Sql} alt='Sql' />
-                <div id='Sql'>
-                  <h1>Sql</h1>
-                  <p>
-                    I started using MySql in 2023 <br></br>
-                    These are the projects I have used Sql
-                    
-                    <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
-                  </p>
-                </div>
-              </div>
+              <img src={Html} alt='Html' />
+              <img src={Css} alt='Css' />
+              <img src={Js} alt='Js' />
+              <img src={Csharp} alt='Csharp' />
+              <img src={Sql} alt='Sql' />
             </div>
           </div>
           <div className='container media'>
             <h1>MEDIAPRODUCTION</h1>
             <div className='icons-container'>
-              <div className='media-icon'>
-                <img src={Photosop} alt='Photosop' />
-                <div id='Photosop'>
-                  <h1>Photosop</h1>
-                  <p>
-                    I have used Photosop since 2017 <br></br>
-                    I use Photosop for Thumbnails on YouTube and at my workplace for banners.
-                    
-                    <li><a href='https://www.youtube.com/c/Lu69as' target='blank' rel='noreferrer'>YouTube</a></li>
-                    <li><a href='https://mega.nz/file/cppyARrT#AHg6-_m21cCVS4o_RySvXTZY8LhhlWktOVfsYWVdap8' target='blank' rel='noreferrer'>FFK Banners</a></li>
-                    <li><a href='https://mega.nz/file/E8pl0YiA#djbfZKp7Wg4gfdJD7_KhIG6OH88s-LmrVDCxhYiLIxI' target='blank' rel='noreferrer'>Ivar Aasen NFTs</a></li>
-                    <li><a href='https://www.reddit.com/r/photoshopbattles/' target='blank' rel='noreferrer'>Photosop Battles</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='media-icon'>
-                <img src={Premiere} alt='Premiere' />
-                <div id='Premiere'>
-                  <h1>Premiere Pro</h1>
-                  <p>
-                    I have used Premiere Pro since 2017 <br></br>
-                    I use Premiere for video editing for YouTube videos and some school projects.
-                    
-                    <li><a href='https://www.youtube.com/c/Lu69as' target='blank' rel='noreferrer'>YouTube</a></li>
-                    <li><a href='https://mega.nz/file/JoRDTDAT#3J6raHFJe0OyeSYFXp5rpwB42R3gIQSpt0pFhqlgqYw' target='blank' rel='noreferrer'>Ar Glasses</a></li>
-                    <li><a href='https://mega.nz/file/0sphAAhT#8Q4fa_Y16XutVVqixBLlsgJPP6thS0aULO-CH3omzBc' target='blank' rel='noreferrer'>Fake VR Ad</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='media-icon'>
-                <img src={Wordpress} alt='Wordpress' />
-                <div id='Wordpress'>
-                  <h1>Wordpress</h1>
-                  <p>
-                    I have used Wordpress since 2022 <br></br>
-                    I used wordpress for a school project in 8th grade but also use it at my workplace.
-                    
-                    <li><a href='https://www.busposten.com' target='blank' rel='noreferrer'>busposten.com</a></li>
-                    <li><a href='https://internship.relevantnettside.no' target='blank' rel='noreferrer'>Internship Site</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='media-icon'>
-                <img src={Obs} alt='Obs' />
-                <div id='Obs'>
-                  <h1>Language</h1>
-                  <p>
-                    I have used Obs since 2020 <br></br>
-                    I use Obs to stream and record videos for my YouTube Channel.
-                    
-                    <li><a href='https://www.youtube.com/c/Lu69as' target='blank' rel='noreferrer'>YouTube</a></li>
-                  </p>
-                </div>
-              </div>
-              <div className='media-icon'>
-                <img src={Indesign} alt='Indesign' />
-                <div id='Indesign'>
-                  <h1>Language</h1>
-                  <p>
-                    I have used Indesign since 2023 <br></br>
-                    I have used Indesign to create a toutorial for a school project.
-                    
-                    <li><a href='https://mega.nz/file/4kJmjRrT#eD3m6Her7EEm7K1kRhjFd3PeJMFbr7c_J60xBdHBCMA' target='blank' rel='noreferrer'>VS Toutorial</a></li>
-                  </p>
-                </div>
-              </div>
+              <img src={Photosop} alt='Photosop' />
+              <img src={Premiere} alt='Premiere' />
+              <img src={Wordpress} alt='Wordpress' />
+              <img src={Obs} alt='Obs' />
+              <img src={Indesign} alt='Indesign' />
             </div>
+          </div>
+          <div className='desc' id='Html'>
+                <h1>Html</h1>
+                <p>
+                  I started using Html in 2019 <br></br>
+                  These are the projects I have used Html
+                  
+                  <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
+                  <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
+                  <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
+                  <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
+                  <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
+                  <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
+                </p>
+          </div>
+          <div className='desc' id='Css'>
+            <h1>Css</h1>
+            <p>
+              I started using Css in 2021 <br></br>
+              These are the projects I have used Css
+              
+              <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
+              <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
+              <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
+              <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
+              <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
+              <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Js'>
+            <h1>JavaScript</h1>
+            <p>
+              I started using Js in 2022 <br></br>
+              These are the projects I have used Js
+              
+              <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
+              <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
+              <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
+              <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
+              <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
+              <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Csharp'>
+            <h1>C#</h1>
+            <p>
+              I started using C# in 2023 <br></br>
+              These are the projects I have used C#
+              
+              <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
+              <li><a href='https://github.com/Lu69as/BubbleSort' target='blank' rel='noreferrer'>Bubble Sort</a></li>
+              <li><a href='https://github.com/Lu69as/TemperatureIfElseWhile' target='blank' rel='noreferrer'>Temperature</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Sql'>
+            <h1>Sql</h1>
+            <p>
+              I started using MySql in 2023 <br></br>
+              These are the projects I have used Sql
+              
+              <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Photosop'>
+            <h1>Photosop</h1>
+            <p>
+              I have used Photosop since 2017 <br></br>
+              I use Photosop for Thumbnails on YouTube and at my workplace for banners.
+              
+              <li><a href='https://www.youtube.com/c/Lu69as' target='blank' rel='noreferrer'>YouTube</a></li>
+              <li><a href='https://mega.nz/file/cppyARrT#AHg6-_m21cCVS4o_RySvXTZY8LhhlWktOVfsYWVdap8' target='blank' rel='noreferrer'>FFK Banners</a></li>
+              <li><a href='https://mega.nz/file/E8pl0YiA#djbfZKp7Wg4gfdJD7_KhIG6OH88s-LmrVDCxhYiLIxI' target='blank' rel='noreferrer'>Ivar Aasen NFTs</a></li>
+              <li><a href='https://www.reddit.com/r/photoshopbattles/' target='blank' rel='noreferrer'>Photosop Battles</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Premiere'>
+            <h1>Premiere Pro</h1>
+            <p>
+              I have used Premiere Pro since 2017 <br></br>
+              I use Premiere for video editing for YouTube videos and some school projects.
+              
+              <li><a href='https://www.youtube.com/c/Lu69as' target='blank' rel='noreferrer'>YouTube</a></li>
+              <li><a href='https://mega.nz/file/JoRDTDAT#3J6raHFJe0OyeSYFXp5rpwB42R3gIQSpt0pFhqlgqYw' target='blank' rel='noreferrer'>Ar Glasses</a></li>
+              <li><a href='https://mega.nz/file/0sphAAhT#8Q4fa_Y16XutVVqixBLlsgJPP6thS0aULO-CH3omzBc' target='blank' rel='noreferrer'>Fake VR Ad</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Wordpress'>
+            <h1>Wordpress</h1>
+            <p>
+              I have used Wordpress since 2022 <br></br>
+              I used wordpress for a school project in 8th grade but also use it at my workplace.
+              
+              <li><a href='https://www.busposten.com' target='blank' rel='noreferrer'>busposten.com</a></li>
+              <li><a href='https://internship.relevantnettside.no' target='blank' rel='noreferrer'>Internship Site</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Obs'>
+            <h1>Language</h1>
+            <p>
+              I have used Obs since 2020 <br></br>
+              I use Obs to stream and record videos for my YouTube Channel.
+              
+              <li><a href='https://www.youtube.com/c/Lu69as' target='blank' rel='noreferrer'>YouTube</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Indesign'>
+            <h1>Language</h1>
+            <p>
+              I have used Indesign since 2023 <br></br>
+              I have used Indesign to create a toutorial for a school project.
+              
+              <li><a href='https://mega.nz/file/4kJmjRrT#eD3m6Her7EEm7K1kRhjFd3PeJMFbr7c_J60xBdHBCMA' target='blank' rel='noreferrer'>VS Toutorial</a></li>
+            </p>
           </div>
         </section>
       </article>
@@ -341,22 +336,22 @@ function App() {
         <section>
           <div className='line'>
             <div className='endline'></div>
-            <div className='school'>
-              <div><img src={school1} alt='school1'/></div>
+            <a className='school' href="https://tryggheim-halden.barnehage.no/" target="_blank" rel="noreferrer">
+              <img src={school1} alt='school1'/>
               <h1>Tryggheim Barnehage <br></br> 2009 - 2012</h1>
-            </div>
-            <div className='school'>
-              <div><img src={school2} alt='school2'/></div>
+            </a>
+            <a className='school' href="https://www.fredrikstad.kommune.no/skoler/kjolberg-skole/" target="_blank" rel="noreferrer">
+              <img src={school2} alt='school2'/>
               <h1>Kjølberg School <br></br> 2012 - 2019</h1>
-            </div>
-            <div className='school'>
-              <div><img src={school3} alt='school3'/></div>
+            </a>
+            <a className='school' href="https://www.fredrikstad.kommune.no/skoler/borge-uskole/" target="_blank" rel="noreferrer">
+              <img src={school3} alt='school3'/>
               <h1>Borge Secondary School <br></br> 2019 - 2022</h1>
-            </div>
-            <div className='school'>
-              <div><img src={school4} alt='school4'/></div>
+            </a>
+            <a className='school' href="https://viken.no/glemmen-vgs/" target="_blank" rel="noreferrer">
+              <img src={school4} alt='school4'/>
               <h1>Glemmen High School <br></br> 2022 - 2024</h1>
-            </div>
+            </a>
           </div>
         </section>
       </article>
@@ -364,31 +359,104 @@ function App() {
       <article id='Hobbies'>
       <img className='transition' alt='transition8' src={transition9}/>
       <img className='transition' alt='transition9' src={transition8}/>
-        <h1>Games</h1>
-        <div className='container games'>
-          <div className='game'>
-            <img src={f123} alt='f123' />
-            <div></div>
-          </div>
-          <div className='game'>
-            <img src={skyrim} alt='skyrim' />
-            <div></div>
-          </div>
-          <div className='game'>
-            <img src={iracing} alt='iracing' />
-            <div></div>
-          </div>
-          <div className='game'>
-            <img src={boneworks} alt='boneworks' />
-            <div></div>
-          </div>
-          <div className='game'>
-            <img src={alyx} alt='alyx' />
-            <div></div>
-          </div>
+        <section className='titles'>
+          <h1>Games</h1>
+          <h1>Cars</h1>
+          <h1>Formula 1</h1>
+        </section>
+        <div className='container Games' style={{display: "none"}}>
+          <section className='gameList'>
+            <div className='game'>
+              <img src={f123} alt='f123' />
+              <div></div>
+            </div>
+            <div className='game'>
+              <img src={skyrim} alt='skyrim' />
+              <div></div>
+            </div>
+            <div className='game'>
+              <img src={iracing} alt='iracing' />
+              <div></div>
+            </div>
+            <div className='game'>
+              <img src={boneworks} alt='boneworks' />
+              <div></div>
+            </div>
+            <div className='game'>
+              <img src={alyx} alt='alyx' />
+              <div></div>
+            </div>
+          </section>
+          <section className='gameDescriptions'>
+            <div className='gameDesc f123'>
+              <h1>F1 23</h1>
+              <p>
+                F1 23 is the official and most authentic way to drive f1 cars virtually
+                The main reason for playing this game is beacause of its in-depth career mode
+                where you can start all the way from F2 and work your way up to a World Championship
+              </p>
+              <a href='https://store.steampowered.com/app/2108330/F1_23/' target='_blank' rel='noreferrer'>'
+                <svg style={{ background: '#171a21' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                  <path fill="#fff" d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/>
+                </svg>
+              </a>
+            </div>
+            <div className='gameDesc skyrim'>
+              <h1>Skyrim VR</h1>
+              <p>
+                Skyrim is one of the biggest roleplaying games ever and the VR version is just as big.
+                The VR version isn't a masterpiece since it is a pretty lazy conversion to the VR headset.
+                The only reason this game is even playable is that there are thousands of people modding this game
+                still striving to make it into one of the best functional VR games ever, with the story of skyrim.
+              </p>
+              <a href='https://store.steampowered.com/app/611670/The_Elder_Scrolls_V_Skyrim_VR/' target='_blank' rel='noreferrer'>'
+                <svg style={{ background: '#171a21' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                  <path fill="#fff" d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/>
+                </svg>
+              </a>
+            </div>
+            <div className='gameDesc iracing'>
+              <h1>iRacing</h1>
+              <p>
+                iRacing is the biggest and of the most realistic multiplayer car simulation game in the world.
+                Many people dislike the game for its expensive subscribtion and price for extra cars that arent free.
+                Allthoug its important to realize that the multiplayer service is really expensive to upkeep and may be worth it.
+              </p>
+              <a href='https://store.steampowered.com/app/266410/iRacing/' target='_blank' rel='noreferrer'>'
+                <svg style={{ background: '#171a21' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                  <path fill="#fff" d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/>
+                </svg>
+              </a>
+            </div>
+            <div className='gameDesc boneworks'>
+              <h1>Boneworks</h1>
+              <p>
+                Boneworks is hands down the most realistic VR game accesible to the public.
+                It's physics engine has been carefully crafted to make every item in the game have weight and interactivity.
+                The guns in the game are also made to be as realistic as possible with it also having the same interactivity.
+              </p>
+              <a href='https://store.steampowered.com/app/823500/BONEWORKS/' target='_blank' rel='noreferrer'>'
+                <svg style={{ background: '#171a21' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                  <path fill="#fff" d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/>
+                </svg>
+              </a>
+            </div>
+            <div className='gameDesc alyx'>
+              <h1>Half-Life Alyx</h1>
+              <p>
+                Half Life Alyx is the third Half-Life title in the series of games made by valve.
+                Its story is renound for being the best in VR and when you pair that with a pretty decent set of physics
+                you get what I would call the best VR game ever. An absolute essential for anyone wanting to try the Medium.
+              </p>
+              <a href='https://store.steampowered.com/app/546560/HalfLife_Alyx/' target='_blank' rel='noreferrer'>'
+                <svg style={{ background: '#171a21' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+                  <path fill="#fff" d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/>
+                </svg>
+              </a>
+            </div>
+          </section>
         </div>
-        <h1>Cars</h1>
-        <div className='container cars'>
+        <div className='container Cars' style={{display: "none"}}>
           <div className='car'>
             <img src={honda} alt='honda' />
             <img src={nsx} alt='nsx' />
@@ -402,8 +470,7 @@ function App() {
             <img src={challenger} alt='challenger' />
           </div>
         </div>
-        <h1>Formula 1</h1>
-        <div className='container f1'>
+        <div className='container Formula' style={{display: "none"}}>
           <div className='driver'>
             <img src={f1driver3} alt='Fernando Alonso' />
             <h1>
