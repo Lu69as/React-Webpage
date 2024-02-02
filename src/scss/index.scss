@@ -632,14 +632,16 @@ article {
 
       & svg {
         margin-top: 5%;
+        margin-inline: 1vw;
         border-radius: 100vw;
         padding: 1vw;
         width: 2.5vw;
+        aspect-ratio: 1;
         scale: 1.00001;
         transition: 200ms;
 
         &:hover {
-          scale: 1.2;
+          scale: 1.1;
           transition: 400ms;
         }
       }
