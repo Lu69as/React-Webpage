@@ -1,8 +1,11 @@
+import Wiki from './img/experience/wiki-min.png'
 import Html from './img/experience/html-min.png'; 
-import Css from './img/experience/css-min.png'; 
+import Css from './img/experience/css-min.png';
+import Scss from './img/experience/scss-min.png'; 
 import Js from './img/experience/js-min.png'; 
 import Csharp from './img/experience/csharp-min.png'; 
 import Sql from './img/experience/mysql-min.png'; 
+import React from './img/experience/react-min.png';
 import Photosop from './img/experience/photoshop-min.png'; 
 import Premiere from './img/experience/premiere-min.png'; 
 import Indesign from './img/experience/indesign-min.png'; 
@@ -45,9 +48,7 @@ let d = new Date();
 const user = {
   name: 'Lukas Okkenhaug',
   desc: ' A Creative Fella from Norway',
-  age: d.getFullYear() - (d.getMonth() <= 7 ? 2007 : 2006) + ' Years and ' 
-    + (d.getMonth() >= 7 ? d.getMonth() - (d.getDate() < 15 ? 7 : 6)
-      : d.getMonth() + (d.getDate() < 15 ? 7 : 8)) + ' Months old'
+  age: d.getFullYear() - (d.getMonth() <= 7 ? 2007 : 2006) + ' Years old'
 }
 if (d.getDate === 15 && d.getMonth() === 12) {
   user.age = 'Its my Birthday! I`m turning ' + (d.getFullYear() - 2006) + ' Years old'
@@ -151,7 +152,7 @@ function App() {
       </div>
       <nav>
       <div className="progress-container"><div className="progress-bar myBar"></div></div>
-        <a href="#" onClick={changebackgrund}>
+        <a href="/" onClick={changebackgrund}>
           <p>Home</p>
           <div className='light'></div>
           <div className='lightBulb'></div>
@@ -198,9 +199,11 @@ function App() {
             <div className='icons-container'>
               <img src={Html} alt='Html' />
               <img src={Css} alt='Css' />
+              <img src={Scss} alt='Scss' />
               <img src={Js} alt='Js' />
               <img src={Csharp} alt='Csharp' />
               <img src={Sql} alt='Sql' />
+              <img src={React} alt='React' />
             </div>
           </div>
           <div className='container media'>
@@ -214,10 +217,11 @@ function App() {
             </div>
           </div>
           <div className='desc' id='Html'>
-                <h1>Html</h1>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/HTML' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+                <h1>HTML</h1>
                 <p>
-                  I started using Html in 2019 <br></br>
-                  These are the projects I have used Html
+                  I started using HTML in 2019 <br></br>
+                  These are the projects I have used HTML
                   
                   <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
                   <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
@@ -228,10 +232,11 @@ function App() {
                 </p>
           </div>
           <div className='desc' id='Css'>
-            <h1>Css</h1>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/CSS' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>CSS</h1>
             <p>
-              I started using Css in 2021 <br></br>
-              These are the projects I have used Css
+              I started using CSS in 2021 <br></br>
+              These are the projects I have used CSS
               
               <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
               <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
@@ -241,11 +246,22 @@ function App() {
               <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
             </p>
           </div>
-          <div className='desc' id='Js'>
-            <h1>JavaScript</h1>
+          <div className='desc' id='Scss'>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/Sass_(style_sheet_language)' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>SCSS</h1>
             <p>
-              I started using Js in 2022 <br></br>
-              These are the projects I have used Js
+              I started using SCSS in 2021 <br></br>
+              These are the projects I have used SCSS
+              
+              <li><a href='https://github.com/Lu69as/React-Webpage' target='blank' rel='noreferrer'>This Site</a></li>
+            </p>
+          </div>
+          <div className='desc' id='Js'>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/JavaScript' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>JS</h1>
+            <p>
+              I started using JavaScript in 2022 <br></br>
+              These are the projects I have used JavaScript
               
               <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
               <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
@@ -256,6 +272,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Csharp'>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/C_Sharp_(programming_language)' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
             <h1>C#</h1>
             <p>
               I started using C# in 2023 <br></br>
@@ -267,15 +284,27 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Sql'>
-            <h1>Sql</h1>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/SQL' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>MS SQL</h1>
             <p>
-              I started using MySql in 2023 <br></br>
-              These are the projects I have used Sql
+              I started using Ms SQL in 2023 <br></br>
+              These are the projects I have used Ms SQL
               
               <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
             </p>
           </div>
+          <div className='desc' id='React'>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/React_(software)' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>React JS</h1>
+            <p>
+              I started using React JS in 2023 <br></br>
+              These are the projects I have used React
+              
+              <li><a href='https://github.com/Lu69as/React-Webpage' target='blank' rel='noreferrer'>This Site</a></li>
+            </p>
+          </div>
           <div className='desc' id='Photosop'>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/Adobe_Photoshop' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
             <h1>Photosop</h1>
             <p>
               I have used Photosop since 2017 <br></br>
@@ -288,7 +317,8 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Premiere'>
-            <h1>Premiere Pro</h1>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/Adobe_Premiere_Pro' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>Premiere</h1>
             <p>
               I have used Premiere Pro since 2017 <br></br>
               I use Premiere for video editing for YouTube videos and some school projects.
@@ -299,6 +329,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Wordpress'>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/WordPress' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
             <h1>Wordpress</h1>
             <p>
               I have used Wordpress since 2022 <br></br>
@@ -309,7 +340,8 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Obs'>
-            <h1>Language</h1>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/OBS_Studio' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>Obs</h1>
             <p>
               I have used Obs since 2020 <br></br>
               I use Obs to stream and record videos for my YouTube Channel.
@@ -318,7 +350,8 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Indesign'>
-            <h1>Language</h1>
+            <a className='wiki' href='https://en.wikipedia.org/wiki/Adobe_Indesign' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <h1>Indesign</h1>
             <p>
               I have used Indesign since 2023 <br></br>
               I have used Indesign to create a toutorial for a school project.
@@ -333,27 +366,31 @@ function App() {
         <img className='transition' alt='transition4' src={transition5}/>
         <img className='transition' alt='transition5' src={transition4}/>
         <div className='window'>
-          <div className='plank'></div>
+          <div className='blur'></div><div className='blurT'></div>
+          <div className='plank'></div><div className='plankT'></div>
           <h1>Relevant</h1>
           <p>I work at <a href='https://relevant.no/' target='_blank' rel='noreferrer'>Relevant Advertizing and Media Beurou </a> 
             on fridays as a free Intern for them. and am planing to become a full intern for them after the summer.
             <br></br><br></br>I learn mostly design, but also use my programming skills to work faster. </p>
         </div>
         <div className='window'>
-          <div className='plank'></div>
+          <div className='blur'></div><div className='blurT'></div>
+          <div className='plank'></div><div className='plankT'></div>
           <h1>ARK</h1>
           <p>I had a paid single-day-job organizing books for <a href='https://www.ark.no/' target='_blank' rel='noreferrer'>Ark Bookstore </a>
              ØstfoldHalden in 2019, I got the Job from my aunt.
             <br></br><br></br>I learned how to be efficent with organizing and counting store items. </p>
         </div>
         <div className='window'>
-          <div className='plank'></div>
+          <div className='blur'></div><div className='blurT'></div>
+          <div className='plank'></div><div className='plankT'></div>
           <h1>Roofwork</h1>
           <p>I got paid for helping my dad fix the roof on my parents rental house in the summer of 2022.
             <br></br><br></br>I learned to work efficent with my dad and learned about some roof and construction stuff. </p>
         </div>
         <div className='window'>
-          <div className='plank'></div>
+          <div className='blur'></div><div className='blurT'></div>
+          <div className='plank'></div><div className='plankT'></div>
           <h1>Shovelling and Grasscutting</h1>
           <p>I cut grass during the summer and Shovel snow during the winter for both my dad and one of my neighbors.
             <br></br><br></br>From this, I learn to do a thourough job and to work efficently with how I do my work.</p>
@@ -597,9 +634,9 @@ function App() {
       <footer>
         <div className='info'>
           <h1>Lukas Okkenhaug</h1>
-          <h1>Social Media</h1>
+          <h1>Contacts</h1>
           <p>
-            {user.age} <br></br>
+            {user.age} (15. 07. 2006)<br></br>
             <a href='https://www.google.com/maps/place/%C3%98stfold/' target='_blank' rel='noreferrer'>Østfold, Norway</a> Born and Raised <br></br>
             He / Him
           </p>
