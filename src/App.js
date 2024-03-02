@@ -85,26 +85,26 @@ window.onload = () => {
   h2.innerHTML = '';
   function nameAppear() {
 
-    const cursor = document.createElement('span');
-    cursor.classList.add('cursor');
-    cursor.innerHTML = '|';
+  const cursor = document.createElement('span');
+  cursor.classList.add('cursor');
+  cursor.innerHTML = '|';
 
-    for (let i = 0; i < user.name.length; i++) {
-      setTimeout(() => {
-        const name = document.createElement('span');
-        name.innerHTML = user.name[i, i];
-        h1.append(name);
-        h1.append(cursor);
-      }, i * 125);
-    }
-    for (let i = 0; i < user.desc.length; i++) {
-      setTimeout(() => {
-        const desc = document.createElement('span');
-        desc.innerHTML = user.desc[i, i];
-        h2.append(desc);
-        h2.append(cursor);
-      }, (user.name.length * 150) + (i * 75));
-    }
+  for (let i = 0; i < user.name.length; i++) {
+    setTimeout(() => {
+      const name = document.createElement('span');
+      name.innerHTML = user.name[i, i];
+      h1.append(name);
+      h1.append(cursor);
+    }, i * 125);
+  }
+  for (let i = 0; i < user.desc.length; i++) {
+    setTimeout(() => {
+      const desc = document.createElement('span');
+      desc.innerHTML = user.desc[i, i];
+      h2.append(desc);
+      h2.append(cursor);
+    }, (user.name.length * 150) + (i * 75));
+  }
   } nameAppear();
   
   document.querySelectorAll('.icons-container img').forEach((e) => {
@@ -142,6 +142,24 @@ window.onload = () => {
       document.querySelector("." + e.firstChild.getAttribute("alt")).style.display = "block";
     })
   });
+
+  document.addEventListener("mousemove", (e) => {
+    const cursor1 = document.querySelector(".Circles1Cursor:nth-child(2)");
+    const cursor2 = document.querySelector(".Circles1Cursor:nth-child(3)");
+    let newTop = e.clientY - 40;
+    let newLeft = e.clientX - 40;
+
+    cursor1.setAttribute("style", "transform: translateX(" + (newLeft + 27.5) + "px) translateY(" + (newTop + 27.5) + "px);")
+    cursor2.setAttribute("style", "transform: translateX(" + newLeft + "px) translateY(" + newTop + "px);")
+  })
+
+  document.querySelectorAll("#CursorChoice .cursors div").forEach((e) => {
+    e.addEventListener('click', () => {
+      document.querySelector(
+        `.cursor${document.querySelector("#CursorChoice .cursors div").classList.toString().slice(1)}`
+      ).style.display = "flex";
+    });
+  })
 }
 
 function App() {
@@ -150,6 +168,10 @@ function App() {
       <div className='load'>
         (Let me Load)
       </div>
+
+      <div className="Circles1Cursor" style={{top: '0', left: '0'}}></div>
+      <div className="Circles1Cursor" style={{top: '0', left: '0'}}></div>
+
       <nav>
       <div className="progress-container"><div className="progress-bar myBar"></div></div>
         <a href="/" onClick={changebackgrund}>
@@ -185,7 +207,7 @@ function App() {
       </div>
 
       <header className="App-header">
-        <h1>Lukas</h1>
+        <h1 translate='no'>Lukas</h1>
         <h2>Meg</h2>
         <img className='transition' alt='transition1' src={transition1}/>
       </header>
@@ -370,7 +392,7 @@ function App() {
           <div className='plank'></div><div className='plankT'></div>
           <h1>Relevant</h1>
           <p>I work at <a href='https://relevant.no/' target='_blank' rel='noreferrer'>Relevant Advertizing and Media Beurou </a> 
-            on fridays as a free Intern for them. and am planing to become a full intern for them after the summer.
+            on mondays and fridays as a free Intern for them and is planing to become a full intern for them after the summer.
             <br></br><br></br>I learn mostly design, but also use my programming skills to work faster. </p>
         </div>
         <div className='window'>
@@ -431,6 +453,7 @@ function App() {
           <h1>Games</h1>
           <h1>Cars</h1>
           <h1>Formula 1</h1>
+          <h1>YouTube</h1>
         </section>
         <div className='container Games' style={{display: "none"}}>
           <section className='gameList'>
@@ -514,7 +537,7 @@ function App() {
                 Many people dislike the game for its expensive subscribtion and price for extra cars that arent free.
                 Allthoug its important to realize that the multiplayer service is really expensive to upkeep and may be worth it.
               </p>
-              <a href='https://store.steampowered.com/app/266410/iRacing/' target='_blank' rel='noreferrer'>'
+              <a href='https://store.steampowered.com/app/266410/iRacing/' target='_blank' rel='noreferrer'>
                 <svg style={{ background: '#171a21' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
                   <path fill="#fff" d="M496 256c0 137-111.2 248-248.4 248-113.8 0-209.6-76.3-239-180.4l95.2 39.3c6.4 32.1 34.9 56.4 68.9 56.4 39.2 0 71.9-32.4 70.2-73.5l84.5-60.2c52.1 1.3 95.8-40.9 95.8-93.5 0-51.6-42-93.5-93.7-93.5s-93.7 42-93.7 93.5v1.2L176.6 279c-15.5-.9-30.7 3.4-43.5 12.1L0 236.1C10.2 108.4 117.1 8 247.6 8 384.8 8 496 119 496 256zM155.7 384.3l-30.5-12.6a52.79 52.79 0 0 0 27.2 25.8c26.9 11.2 57.8-1.6 69-28.4 5.4-13 5.5-27.3.1-40.3-5.4-13-15.5-23.2-28.5-28.6-12.9-5.4-26.7-5.2-38.9-.6l31.5 13c19.8 8.2 29.2 30.9 20.9 50.7-8.3 19.9-31 29.2-50.8 21zm173.8-129.9c-34.4 0-62.4-28-62.4-62.3s28-62.3 62.4-62.3 62.4 28 62.4 62.3-27.9 62.3-62.4 62.3zm.1-15.6c25.9 0 46.9-21 46.9-46.8 0-25.9-21-46.8-46.9-46.8s-46.9 21-46.9 46.8c.1 25.8 21.1 46.8 46.9 46.8z"/>
                 </svg>
@@ -620,14 +643,28 @@ function App() {
             <img src={f1logo} alt='Mclaren' />
             <h1>
               Mclaren is my favorite formula 1 Team <br></br>
-              In 2023, They have Lando Norris and <br></br>
-              Oscar Piastri as their driver line-up.<br></br><br></br>
-              They have 183x Grand prix victories, 503x Podiums<br></br>
-              , 8x Constructor World Championships <br></br>
+              In 2024<br></br><br></br>
+              They have 183x Grand prix victories, 503x Podiums,<br></br>
+              8x Constructor World Championships <br></br>
               and 12x Drivers World Championships <br></br>
               <img src={flag1} alt='Britain' />
             </h1>
           </div>
+        </div>
+        <div className='container YouTube' style={{display: "none"}}>
+          <iframe
+            title='latestYoutube'
+            src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUjASemWCGsjDuEH-CaF7wOg"
+            width="600"
+            height="340"
+            frameBorder="0"
+            allowfullscreen>
+          </iframe>
+          <p>
+            I started making youtube videos back around 2018 and am still uploading videos to this day.
+            Allthough my quality has obviously gone up and I have learned many ways edit in a funny way.
+            I make mostly gaming highlights videos, but I also do some other stuff.
+          </p>
         </div>
       </article>
 
