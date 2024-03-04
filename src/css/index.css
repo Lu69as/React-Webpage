@@ -317,11 +317,11 @@ article:nth-child(even) {
   position: fixed;
   pointer-events: none;
   z-index: 10000;
-  transition: 0.5s linear;
+  transition: 0.1s linear;
 }
 
 .Circles1Cursor:nth-child(2) {
-  transition: 0.1s linear;
+  transition: 0s;
   background: rgb(16, 74, 122);
   border: none;
   height: 15px;
@@ -948,6 +948,9 @@ footer section a svg:hover {
   nav a:nth-child(6) {
     display: none;
   }
+  .Circles1Cursor {
+    display: none;
+  }
   #Experience section {
     flex-direction: column;
   }
@@ -965,20 +968,12 @@ footer section a svg:hover {
   }
   #Work .window {
     width: 80vw;
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.2), inset -40vw 0 rgba(255, 123, 0, 0.2);
-    border: solid 1vw #0f7e59;
   }
   #Work .window h1 {
     font-size: 10vw;
   }
   #Work .window p {
     font-size: 2.5vw;
-  }
-  #Work .window .plank {
-    width: 1vw;
-  }
-  #Work .window:hover {
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.025), inset -40vw 0 rgba(255, 123, 0, 0.025);
   }
   #Education section .line {
     margin: 5vw 47.5vw;
@@ -1014,6 +1009,7 @@ footer section a svg:hover {
   }
   #Education section .line .school:nth-child(even) img {
     left: 15vw;
+    margin-top: 9vh;
   }
   #Education section .line .school:nth-child(even) h1 {
     top: 0;

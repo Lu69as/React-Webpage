@@ -10,7 +10,7 @@ $font-family_2: "Poppins";
 $font-family_3: Arial, Helvetica, sans-serif;
 $font-family_4: "poppins";
 $background-color_1: #1C0E12;
-$background-color_2: #3a1d2786;
+$background-color_2: rgba(58, 29, 39, 0.5254901961);
 
 @import "https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600;800&display=swap";
 @keyframes transitionAni {
@@ -67,16 +67,15 @@ body {
 html {
 	scroll-behavior: smooth;
 }
-:target {
+&:target {
 	scroll-margin-top: 10vh;
 }
-::selection {
+&::selection {
 	background: rgba(29, 231, 164, 0.2509803922);
 }
 * {
 	cursor: none !important;
 }
-
 a {
 	text-decoration: none;
 }
@@ -218,16 +217,20 @@ nav {
 .spatter2 {
 	background-image: url("../img/spatter/spatter2.svg");
 	transition: 400ms;
-} .spatter1 {
+}
+.spatter1 {
 	background-image: url("../img/spatter/spatter1.svg");
 	transition: 400ms;
-} .spatter3 {
+}
+.spatter3 {
 	background-image: url("../img/spatter/spatter3.svg");
 	transition: 400ms;
-} .spatter4 {
+}
+.spatter4 {
 	background-image: url("../img/spatter/spatter4.svg");
 	transition: 400ms;
-} .spatter5 {
+}
+.spatter5 {
 	background-image: url("../img/spatter/spatter5.svg");
 	transition: 400ms;
 }
@@ -259,7 +262,6 @@ article {
 		background: #30181f;
 	}
 }
-
 .App-header {
 	min-height: 100vh;
 	width: 100vw;
@@ -282,12 +284,14 @@ article {
 		font-size: 9vw;
 		margin: 0;
 		cursor: default;
-		& span::selection {
-			-webkit-text-fill-color: transparent;
-			background: transparent;
-		}
-		& span:hover {
-			-webkit-text-fill-color: transparent;
+		span {
+			&::selection {
+				-webkit-text-fill-color: transparent;
+				background: transparent;
+			}
+			&:hover {
+				-webkit-text-fill-color: transparent;
+			}
 		}
 	}
 	.cursor {
@@ -304,7 +308,6 @@ article {
 		font-size: 4vw;
 	}
 }
-
 .Circles1Cursor {
 	height: 50px;
 	aspect-ratio: 1;
@@ -313,19 +316,18 @@ article {
 	position: fixed;
 	pointer-events: none;
 	z-index: 10000;
-	transition: .5s linear
+	transition: 0.1s linear;
+	&:nth-child(2) {
+		transition: 0s;
+		background: rgb(16, 74, 122);
+		border: none;
+		height: 15px;
+	}
+	&:nth-child(3) {
+		transition: 0.15s linear;
+		border: 10px solid rgb(24, 120, 199);
+	}
 }
-.Circles1Cursor:nth-child(2) {
-	transition: .1s linear;
-	background: rgb(16, 74, 122);
-	border: none;
-	height: 15px;
-}
-.Circles1Cursor:nth-child(3) {
-	transition: .15s linear;
-	border: 10px solid rgba(24, 120, 199, 1);
-}
-
 #Experience {
 	position: relative;
 	h1 {
@@ -359,9 +361,9 @@ article {
 				img {
 					aspect-ratio: 1;
 					cursor: pointer;
-					filter: drop-shadow(0 0 20px rgba(0,0,0,.4));
+					filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.4));
 					scale: 1.0001;
-					transition: .4s;
+					transition: 0.4s;
 					width: 20%;
 					&:hover {
 						scale: 1.1;
@@ -412,7 +414,6 @@ article {
 		transition: 1200ms;
 	}
 }
-
 #Work {
 	display: grid;
 	grid-template-columns: auto auto;
@@ -424,7 +425,7 @@ article {
 		width: 40vw;
 		aspect-ratio: 2/1;
 		background: rgba(124, 218, 255, 0.541);
-		border: solid .5vw white;
+		border: solid 0.5vw white;
 		border-left: none;
 		border-right: none;
 		overflow: hidden;
@@ -476,7 +477,7 @@ article {
 			position: absolute;
 		}
 		.plank {
-			border-right: solid .5vw white;
+			border-right: solid 0.5vw white;
 			z-index: 3;
 			transition: 800ms;
 			transition-delay: 500ms;
@@ -486,7 +487,7 @@ article {
 			position: absolute;
 		}
 		.plankT {
-			border-left: solid .5vw white;
+			border-left: solid 0.5vw white;
 			z-index: 3;
 			transition: 800ms;
 			transition-delay: 500ms;
@@ -523,7 +524,6 @@ article {
 		}
 	}
 }
-
 #Education {
 	.transition {
 		right: -170vw;
@@ -612,7 +612,6 @@ article {
 		}
 	}
 }
-
 #Hobbies {
 	min-height: 50vh;
 	display: flex;
@@ -806,7 +805,6 @@ article {
 				cursor: pointer;
 				filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.2));
 				z-index: 2;
-
 				&:hover {
 					scale: 1.05;
 					transition: 800ms;
@@ -863,21 +861,18 @@ article {
 		align-items: center;
 		overflow: hidden;
 		height: 70vh;
-
-		& iframe {
+		iframe {
 			width: 40vw;
 			border-radius: 1vw;
-  			box-shadow: 10px 10px #0000002e;
+			box-shadow: 10px 10px rgba(0, 0, 0, 0.1803921569);
 		}
-
-		& p {
+		p {
 			margin-left: 2vw;
 			font-size: 2vw;
 			width: 75%;
 		}
 	}
 }
-
 footer {
 	background: #ca6186;
 	margin: 0;
@@ -980,6 +975,9 @@ footer {
 			}
 		}
 	}
+	.Circles1Cursor {
+		display: none;
+	}
 	#Experience {
 		section {
 			flex-direction: column;
@@ -1000,19 +998,11 @@ footer {
 		grid-template-columns: auto;
 		.window {
 			width: 80vw;
-			box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.2), inset -40vw 0 rgba(255, 123, 0, 0.2);
-			border: solid 1vw #0f7e59;
 			h1 {
 				font-size: 10vw;
 			}
 			p {
 				font-size: 2.5vw;
-			}
-			.plank {
-				width: 1vw;
-			}
-			&:hover {
-				box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8), inset 40vw 0 rgba(0, 255, 34, 0.025), inset -40vw 0 rgba(255, 123, 0, 0.025);
 			}
 		}
 	}
@@ -1051,6 +1041,7 @@ footer {
 					&:nth-child(even) {
 						img {
 							left: 15vw;
+							margin-top: 9vh;
 						}
 						h1 {
 							top: 0;
