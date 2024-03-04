@@ -751,7 +751,7 @@ article:nth-child(even) {
   rotate: 20deg;
 }
 #Hobbies .Formula {
-  background: linear-gradient(130deg, #FA7E0B 33%, #63D0E0);
+  background: linear-gradient(130deg, rgb(0, 0, 0) -33%, #FA7E0B);
   height: 65vh;
 }
 #Hobbies .Formula h1 {
@@ -802,20 +802,20 @@ article:nth-child(even) {
 #Hobbies .Formula .driver img {
   transition: 1200ms;
   position: absolute;
-  right: 0;
+  right: -2.5vw;
   bottom: 0;
-  width: 20vw;
+  width: 17.5vw;
   scale: 1.0001;
   cursor: pointer;
   filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.2));
   z-index: 2;
 }
 #Hobbies .Formula .driver:nth-child(2) img {
-  width: 17.5vw;
+  width: 16vw;
   right: 10vw;
 }
 #Hobbies .Formula .driver:nth-child(1) img {
-  width: 15vw;
+  width: 14.5vw;
   right: 20vw;
 }
 #Hobbies .Formula .driver:hover > img {
