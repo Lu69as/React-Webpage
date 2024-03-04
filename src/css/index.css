@@ -44,8 +44,6 @@ body {
   color: #FCE3EA;
   overflow-x: hidden;
   background-color: #1C0E12;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 body::-webkit-scrollbar {
   display: none;
