@@ -58,8 +58,6 @@ body {
 	color: $color_1;
 	overflow-x: hidden;
 	background-color: $background-color_1;
-	-ms-overflow-style: none;
-	scrollbar-width: none;
 	&::-webkit-scrollbar {
 		display: none;
 	}
