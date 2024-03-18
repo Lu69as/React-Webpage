@@ -35,6 +35,14 @@
     opacity: 0;
   }
 }
+@keyframes subscribe {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -12.7%;
+  }
+}
 
 body {
   margin: 0;
@@ -61,16 +69,21 @@ html {
   background: rgba(29, 231, 164, 0.2509803922);
 }
 
-* {
-  cursor: none !important;
-}
-
 a {
   text-decoration: none;
 }
 
 .App {
   text-align: center;
+}
+
+.blur {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000000000000000;
+  backdrop-filter: drop-shadow(2);
+  pointer-events: none;
 }
 
 .load {
@@ -94,21 +107,6 @@ nav {
   align-items: center;
   font-family: "Poppins";
 }
-nav .progress-container {
-  width: 100vw;
-  height: 10vh;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-nav .progress-container .progress-bar {
-  height: 20%;
-  background: #2e335e;
-  width: 0%;
-  border-radius: 0 2vw 2vw 0;
-}
 nav a {
   width: 10%;
   margin-inline: 2%;
@@ -118,19 +116,11 @@ nav a .lightBulb {
   transition: 400ms;
   position: absolute;
   width: 8%;
-  height: 20%;
+  height: 1vw;
   background: #f075a0;
   top: 0;
   margin-left: 1%;
   border-radius: 0 0 2vw 2vw;
-}
-nav a .light {
-  transition: 400ms;
-  position: absolute;
-  top: 0;
-  margin-left: 1.5%;
-  width: 7%;
-  height: 0%;
 }
 nav a p {
   transition: 400ms;
@@ -139,18 +129,12 @@ nav a p {
   font-size: 1.8vw;
 }
 nav a:hover .lightBulb {
-  background: white;
-  transition: 800ms;
+  height: 1.2vw;
+  transition: 400ms;
 }
-nav a:hover .light {
-  height: 55%;
-  background: linear-gradient(to bottom, grey, transparent);
-  transition: 800ms;
-}
-nav a:hover p {
-  color: white;
-  text-shadow: 0 1vh 5px rgba(255, 255, 255, 0.5);
-  transition: 800ms;
+nav a:active .lightBulb, nav a:active p {
+  margin-top: -1.2vw;
+  transition: 200ms;
 }
 
 .me {
@@ -232,6 +216,36 @@ nav a:hover p {
   transition: 400ms;
 }
 
+.scrollbar {
+  position: fixed;
+  right: 1vw;
+  height: 20vh;
+  aspect-ratio: 1 / 10;
+  background: white;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 9em;
+  cursor: pointer;
+  z-index: 99;
+  margin: 0;
+}
+
+.scrollbar p {
+  position: absolute;
+  top: -10%;
+  aspect-ratio: 1;
+  height: 20%;
+  background: #d9d9d9;
+  margin: 0;
+  border-radius: 9em;
+  left: -50%;
+}
+
+.scrollbar:active p {
+  scale: .9;
+  transition: 200ms;
+}
+
 .transition {
   position: absolute;
   bottom: 0;
@@ -272,6 +286,13 @@ article:nth-child(even) {
   background-size: cover;
   overflow-x: hidden;
 }
+.App-header div {
+  position: absolute;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  height: 100%;
+  backdrop-filter: blur(20px);
+}
 .App-header .transition {
   animation: none;
 }
@@ -284,14 +305,11 @@ article:nth-child(even) {
   -webkit-text-fill-color: #F075A0;
   font-size: 9vw;
   margin: 0;
-  cursor: default;
+  z-index: +1;
 }
 .App-header h1 span::selection {
   -webkit-text-fill-color: transparent;
   background: transparent;
-}
-.App-header h1 span:hover {
-  -webkit-text-fill-color: transparent;
 }
 .App-header .cursor {
   -webkit-text-fill-color: white;
@@ -305,29 +323,7 @@ article:nth-child(even) {
   font-family: "poppins";
   font-weight: 500;
   font-size: 4vw;
-}
-
-.Circles1Cursor {
-  height: 50px;
-  aspect-ratio: 1;
-  border-radius: 9em;
-  border: 10px solid rgba(24, 120, 199, 0.2);
-  position: fixed;
-  pointer-events: none;
-  z-index: 10000;
-  transition: 0.1s linear;
-}
-
-.Circles1Cursor:nth-child(2) {
-  transition: 0s;
-  background: rgb(16, 74, 122);
-  border: none;
-  height: 15px;
-}
-
-.Circles1Cursor:nth-child(3) {
-  transition: 0.15s linear;
-  border: 10px solid rgb(24, 120, 199);
+  z-index: +1;
 }
 
 #Experience {
@@ -379,24 +375,30 @@ article:nth-child(even) {
 #Experience .desc {
   position: absolute;
   transition: 1200ms;
-  width: 22.5%;
-  aspect-ratio: 1/1.6;
-  top: 12%;
-  right: -22.5%;
-  border-radius: 5vw 0 0 5vw;
-  background: #7e4056;
-  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
-  pointer-events: none;
+  left: -25%;
+  top: 50%;
+  transform: translate(-50%, -55%);
+  width: 50vw;
+  border-radius: 4vw;
+  background: #bebebe15;
+  box-shadow: 0px 0px 40px rgba(0, 0, 0, 0.5);
   text-align: center;
+  backdrop-filter: blur(10px);
 }
-#Experience .desc .wiki {
-  width: 4vw;
+#Experience .desc div {
   position: absolute;
   left: 1vw;
-  top: 1.75vw;
+  top: 1vw;
+  border-radius: 3vw 0 0 0;
+  width: 10%;
+  aspect-ratio: 1;
+  box-shadow: inset .6vw .6vw red;
+  transition: 400ms;
+  cursor: pointer;
 }
-#Experience .desc .wiki img {
-  width: 100%;
+#Experience .desc div:active {
+  box-shadow: inset .4vw .4vw red;
+  transition: 200ms;
 }
 #Experience .desc p {
   font-size: 1.2vw;
@@ -412,10 +414,9 @@ article:nth-child(even) {
   color: rgb(205, 237, 255) !important;
 }
 #Experience .experienceShowDesc {
-  right: 0;
-  pointer-events: all;
-  transition: 1200ms;
+  left: 50%;
 }
+
 
 #Work {
   display: grid;
@@ -621,7 +622,7 @@ article:nth-child(even) {
   background: #7e4056;
   border-radius: 2vw;
   margin-inline: 7.5%;
-  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.7);
+  box-shadow: inset 0px 0px 30px rgba(0, 0, 0, 0.6);
   position: relative;
   display: flex;
   flex-wrap: wrap;
@@ -751,7 +752,7 @@ article:nth-child(even) {
   rotate: 20deg;
 }
 #Hobbies .Formula {
-  background: linear-gradient(130deg, rgb(0, 0, 0) -33%, #FA7E0B);
+  background: linear-gradient(130deg, #FA7E0B 33%, #63D0E0);
   height: 65vh;
 }
 #Hobbies .Formula h1 {
@@ -802,20 +803,20 @@ article:nth-child(even) {
 #Hobbies .Formula .driver img {
   transition: 1200ms;
   position: absolute;
-  right: -2.5vw;
+  right: 0;
   bottom: 0;
-  width: 17.5vw;
+  width: 20vw;
   scale: 1.0001;
   cursor: pointer;
   filter: drop-shadow(0 0 50px rgba(0, 0, 0, 0.2));
   z-index: 2;
 }
 #Hobbies .Formula .driver:nth-child(2) img {
-  width: 16vw;
+  width: 17.5vw;
   right: 10vw;
 }
 #Hobbies .Formula .driver:nth-child(1) img {
-  width: 14.5vw;
+  width: 15vw;
   right: 20vw;
 }
 #Hobbies .Formula .driver:hover > img {
@@ -834,15 +835,81 @@ article:nth-child(even) {
   overflow: hidden;
   height: 70vh;
 }
-#Hobbies .YouTube iframe {
+#Hobbies .YouTube .latestVideo {
+  display: flex;
+  margin-left: -5%;
+  flex-direction: row;
+}
+#Hobbies .YouTube .latestVideo iframe {
   width: 40vw;
   border-radius: 1vw;
   box-shadow: 10px 10px rgba(0, 0, 0, 0.1803921569);
 }
-#Hobbies .YouTube p {
-  margin-left: 2vw;
+#Hobbies .YouTube .latestVideo h1 {
+  width: 17.8vw;
+  display: flex;
+  margin-top: 0vw;
+  margin-right: -5vw;
+  rotate: -90deg;
+  font-size: 4vw;
+  overflow: hidden;
+  pointer-events: none;
+}
+#Hobbies .YouTube .latestVideo h1 h2:nth-child(2) {
+  opacity: 0;
+  transition: 400ms ease-out;
+  margin-left: 1vw;
+}
+#Hobbies .YouTube .latestVideo h1 h2:nth-child(1) {
+  transition: 400ms ease-out;
+}
+#Hobbies .YouTube .latestVideo h1:nth-child(3) {
+  rotate: 90deg;
+  margin-left: -5vw;
+}
+#Hobbies .YouTube .latestVideo:hover h1 h2:nth-child(1) {
+  margin-left: -17vw;
+  opacity: 0;
+  transition: 400ms ease-out;
+}
+#Hobbies .YouTube .latestVideo:hover h1 h2:nth-child(2) {
+  opacity: 1;
+  transition: 400ms ease-out;
+}
+#Hobbies .YouTube a {
+  position: relative;
+  width: 90%;
+  border: none;
+  border-radius: 2vw;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.4);
+  height: 5vw;
+  background: #693648;
+  overflow: hidden;
+  cursor: pointer;
+}
+#Hobbies .YouTube a p {
+  position: absolute;
+  display: flex;
+  margin: 0;
   font-size: 2vw;
-  width: 75%;
+  width: 150%;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(192, 192, 192, 0.2);
+  transition: 200ms;
+  animation-name: subscribe;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+#Hobbies .YouTube a:hover {
+  transition: 400ms;
+  color: transparent;
+}
+#Hobbies .YouTube a:hover p {
+  transition: 400ms;
+  transition-delay: 400ms;
+  opacity: 1;
 }
 
 footer {
@@ -918,6 +985,41 @@ footer section a svg:hover {
 
 @media (width < 100vh) {
   .me {
+    left: 30vw;
+    top: 30vh;
+    position: absolute;
+  }
+  .me div {
+    display: none;
+  }
+  .me p {
+    border-radius: 2vw;
+    outline: 2vw solid #f075a0;
+    height: 40vh;
+  }
+  .me:hover {
+    left: 30vw;
+  }
+  .me:hover div {
+    left: 0;
+  }
+  .scrollbar {
+    display: none;
+  }
+  .App-header h1 {
+    rotate: -90deg;
+    font-size: 13vw;
+    position: absolute;
+    width: 100vh;
+    left: -95vw;
+  }
+  .App-header h1 span::selection {
+    -webkit-text-fill-color: #F075A0;
+  }
+  .App-header h1 span:hover {
+    -webkit-text-fill-color: #F075A0;
+  }
+  .App-header h2 {
     display: none;
   }
   nav a {
@@ -973,6 +1075,18 @@ footer section a svg:hover {
   #Work .window p {
     font-size: 2.5vw;
   }
+  #Work .window .blur {
+    display: none;
+  }
+  #Work .window .blurT {
+    display: none;
+  }
+  #Work .window .plank {
+    display: none;
+  }
+  #Work .window .plankT {
+    display: none;
+  }
   #Education section .line {
     margin: 5vw 47.5vw;
     width: 5vw;
@@ -1021,6 +1135,11 @@ footer section a svg:hover {
   }
   #Education section .line .school:nth-child(5) {
     top: 85%;
+  }
+  #Education section .line:hover .endline {
+    margin-left: 0;
+    box-shadow: 0 125vw white;
+    transition: 400ms;
   }
   #Hobbies .Games {
     flex-direction: column;

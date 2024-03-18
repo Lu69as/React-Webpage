@@ -1,4 +1,3 @@
-import Wiki from './img/experience/wiki-min.png'
 import Html from './img/experience/html-min.png'; 
 import Css from './img/experience/css-min.png';
 import Scss from './img/experience/scss-min.png'; 
@@ -68,9 +67,7 @@ function scrollbar() {
   var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
   var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
   var scrolled = (winScroll / height) * 100;
-  document.querySelector(".myBar").style.width = scrolled + "%";
-  if (scrolled === 100) document.querySelector(".myBar").style.borderRadius = '0';
-  else document.querySelector(".myBar").style.borderRadius = '0 2vw 2vw 0';
+  document.querySelector(".scrollbar p").style.top = scrolled - 10 + "%";
 }
 
 window.onload = () => {
@@ -113,17 +110,18 @@ window.onload = () => {
         if (window.innerWidth > window.innerHeight) {
           document.querySelectorAll('.desc').forEach((e) => {e.classList.remove('experienceShowDesc')})
           document.querySelector('#' + desc).classList.add('experienceShowDesc');
-          document.querySelector('#Experience section').style.width = '75%';
-          document.querySelectorAll("#Experience .container h1").forEach((e) => {e.style.fontSize = "2.5vw"})
       
           document.addEventListener('keydown', function(e) {
           if (e.key === "Escape") {
             document.querySelector('#' + desc).classList.remove('experienceShowDesc');
-            document.querySelector('#Experience section').style.width = '100%';
-            document.querySelectorAll("#Experience .container h1").forEach((e) => {e.style.fontSize = "3vw"})
           }
         })
       }
+    })
+  })
+  document.querySelectorAll('#Experience .desc div').forEach((e) => {
+    e.addEventListener('click', () => {
+      e.parentElement.classList.remove("experienceShowDesc");
     })
   })
 
@@ -142,39 +140,20 @@ window.onload = () => {
       document.querySelector("." + e.firstChild.getAttribute("alt")).style.display = "block";
     })
   });
-
-  document.addEventListener("mousemove", (e) => {
-    const cursor1 = document.querySelector(".Circles1Cursor:nth-child(2)");
-    const cursor2 = document.querySelector(".Circles1Cursor:nth-child(3)");
-    let newTop = e.clientY - 40;
-    let newLeft = e.clientX - 40;
-
-    cursor1.setAttribute("style", "transform: translateX(" + (newLeft + 27.5) + "px) translateY(" + (newTop + 27.5) + "px);")
-    cursor2.setAttribute("style", "transform: translateX(" + newLeft + "px) translateY(" + newTop + "px);")
-  })
-
-  document.querySelectorAll("#CursorChoice .cursors div").forEach((e) => {
-    e.addEventListener('click', () => {
-      document.querySelector(
-        `.cursor${document.querySelector("#CursorChoice .cursors div").classList.toString().slice(1)}`
-      ).style.display = "flex";
-    });
-  })
 }
 
 function App() {
   return (
     <div className="App">
+      <div className='blur'></div>
       <div className='load'>
         (Let me Load)
       </div>
 
-      <div className="Circles1Cursor" style={{top: '0', left: '0'}}></div>
-      <div className="Circles1Cursor" style={{top: '0', left: '0'}}></div>
+      <a className='scrollbar' href='#'><p></p></a>
 
       <nav>
-      <div className="progress-container"><div className="progress-bar myBar"></div></div>
-        <a href="/" onClick={changebackgrund}>
+        <a href="#" onClick={changebackgrund}>
           <p>Home</p>
           <div className='light'></div>
           <div className='lightBulb'></div>
@@ -207,9 +186,10 @@ function App() {
       </div>
 
       <header className="App-header">
+        <img className='transition' alt='transition1' src={transition1}/>
+        <div></div>
         <h1 translate='no'>Lukas</h1>
         <h2>Meg</h2>
-        <img className='transition' alt='transition1' src={transition1}/>
       </header>
 
       <article id='Experience'>
@@ -239,22 +219,22 @@ function App() {
             </div>
           </div>
           <div className='desc' id='Html'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/HTML' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
-                <h1>HTML</h1>
-                <p>
-                  I started using HTML in 2019 <br></br>
-                  These are the projects I have used HTML
-                  
-                  <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
-                  <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
-                  <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
-                  <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
-                  <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
-                  <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
-                </p>
+            <div></div>
+            <h1>HTML</h1>
+            <p>
+              I started using HTML in 2019 <br></br>
+              These are the projects I have used HTML
+              
+              <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
+              <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
+              <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
+              <li><a href='https://github.com/Lu69as/Simon-Game' target='blank' rel='noreferrer'>Simon Game</a></li>
+              <li><a href='https://github.com/Lu69as/Dice-game' target='blank' rel='noreferrer'>Dice game</a></li>
+              <li><a href='https://github.com/Lu69as/Voting-Site' target='blank' rel='noreferrer'>Voting Site</a></li>
+            </p>
           </div>
           <div className='desc' id='Css'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/CSS' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>CSS</h1>
             <p>
               I started using CSS in 2021 <br></br>
@@ -269,7 +249,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Scss'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/Sass_(style_sheet_language)' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>SCSS</h1>
             <p>
               I started using SCSS in 2021 <br></br>
@@ -279,12 +259,13 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Js'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/JavaScript' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>JS</h1>
             <p>
               I started using JavaScript in 2022 <br></br>
               These are the projects I have used JavaScript
               
+              <li><a href='https://mega.nz/file/R540xShR#7fthlrkivf1Q8rpQCzcKf05KVFuidyTyTm9tWBe0518' target='blank' rel='noreferrer'>JS Certification</a></li>
               <li><a href='https://github.com/Lu69as/lu69as.github.io' target='blank' rel='noreferrer'>lu69as.github.io</a></li>
               <li><a href='https://github.com/Lu69as/exerciseCounter' target='blank' rel='noreferrer'>Exercise Counter</a></li>
               <li><a href='https://github.com/Lu69as/Drum-Kit' target='blank' rel='noreferrer'>Drum Kit</a></li>
@@ -294,7 +275,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Csharp'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/C_Sharp_(programming_language)' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>C#</h1>
             <p>
               I started using C# in 2023 <br></br>
@@ -306,7 +287,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Sql'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/SQL' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>MS SQL</h1>
             <p>
               I started using Ms SQL in 2023 <br></br>
@@ -316,7 +297,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='React'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/React_(software)' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>React JS</h1>
             <p>
               I started using React JS in 2023 <br></br>
@@ -326,7 +307,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Photosop'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/Adobe_Photoshop' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>Photosop</h1>
             <p>
               I have used Photosop since 2017 <br></br>
@@ -339,7 +320,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Premiere'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/Adobe_Premiere_Pro' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>Premiere</h1>
             <p>
               I have used Premiere Pro since 2017 <br></br>
@@ -351,7 +332,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Wordpress'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/WordPress' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>Wordpress</h1>
             <p>
               I have used Wordpress since 2022 <br></br>
@@ -362,7 +343,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Obs'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/OBS_Studio' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>Obs</h1>
             <p>
               I have used Obs since 2020 <br></br>
@@ -372,7 +353,7 @@ function App() {
             </p>
           </div>
           <div className='desc' id='Indesign'>
-            <a className='wiki' href='https://en.wikipedia.org/wiki/Adobe_Indesign' rel='noreferrer' target='_blank'><img src={Wiki} Alt='Wiki'/></a>
+            <div></div>
             <h1>Indesign</h1>
             <p>
               I have used Indesign since 2023 <br></br>
@@ -652,19 +633,28 @@ function App() {
           </div>
         </div>
         <div className='container YouTube' style={{display: "none"}}>
-          <iframe
-            title='latestYoutube'
-            src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUjASemWCGsjDuEH-CaF7wOg"
-            width="600"
-            height="340"
-            frameBorder="0"
-            allowfullscreen>
-          </iframe>
-          <p>
-            I started making youtube videos back around 2018 and am still uploading videos to this day.
-            Allthough my quality has obviously gone up and I have learned many ways edit in a funny way.
-            I make mostly gaming highlights videos, but I also do some other stuff.
-          </p>
+          <div className='latestVideo'>
+            <h1>
+              <h2>Latest</h2>
+              <h2>Video</h2>
+            </h1>
+            <iframe
+              title='latestYoutube'
+              src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UUjASemWCGsjDuEH-CaF7wOg"
+              width="600"
+              height="340"
+              frameBorder="0"
+            ></iframe>
+            <h1>
+              <h2>Video</h2>
+              <h2>Latest</h2>
+            </h1>
+          </div>
+          <a href='https://www.youtube.com/@Lu69as?sub_confirmation=1' target="_blank" rel='noreferrer'>
+            <p>
+              Subscribe Subscribe Subscribe Subscribe Subscribe Subscribe Subscribe Subscribe Subscribe Subscribe Subscribe
+            </p>
+          </a>
         </div>
       </article>
 
@@ -719,7 +709,7 @@ function App() {
           </a>
           <a href="https://twitter.com/lu69as" rel='noreferrer' target="_blank">
             <svg style={{ background: 'white' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 462.799">
-              <path xmlns="http://www.w3.org/2000/svg" fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/>
+              <path xmlns="http://www.w3.org/2000/svg" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/>
             </svg>
           </a>
           <div></div>
